@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Riesgo Financiero - LexFinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/tools.css">
+</head>
+<body class="tool-page">
+    <!-- Header -->
+    <header class="tool-header">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver
+        </a>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3L2 8v13l10 5 10-5V8L12 3z"/>
+                    <path d="M12 22v-9"/>
+                </svg>
+            </div>
+            <span class="logo-text">LexFinance</span>
+        </div>
+    </header>
+
+    <main class="tool-main">
+        <div class="tool-container animate-fade-in">
+            <div class="tool-hero">
+                <div class="tool-badge risk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Análisis de Riesgo
+                </div>
+                <h1 class="tool-page-title">Calculadora de Riesgo Financiero</h1>
+                <p class="tool-page-subtitle">Evalúa tu perfil de riesgo financiero basado en tus datos personales y financieros.</p>
+            </div>
+
+            <div class="risk-calculator-grid">
+                <div class="risk-form animate-slide-up">
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Datos Personales
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" id="riesgoEmail" class="form-input" placeholder="correo@ejemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Teléfono</label>
+                            <input type="tel" id="riesgoTelefono" class="form-input" placeholder="+57 300 123 4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" id="riesgoNombre" class="form-input" placeholder="Tu nombre">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Edad</label>
+                                <input type="number" id="riesgoEdad" class="form-input" placeholder="30" min="18" max="100">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Género</label>
+                                <select id="riesgoGenero" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Ciudad</label>
+                                <select id="riesgoCiudad" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="bogota">Bogotá</option>
+                                    <option value="medellin">Medellín</option>
+                                    <option value="cali">Cali</option>
+                                    <option value="barranquilla">Barranquilla</option>
+                                    <option value="otra">Otra</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Estado Civil</label>
+                                <select id="riesgoEstadoCivil" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="soltero">Soltero(a)</option>
+                                    <option value="casado">Casado(a)</option>
+                                    <option value="union">Unión Libre</option>
+                                    <option value="divorciado">Divorciado(a)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section animate-slide-up" style="animation-delay: 0.1s;">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            Datos Financieros
+                        </h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Nivel de Escolaridad</label>
+                            <select id="riesgoEscolaridad" class="form-select">
+                                <option value="">Seleccionar</option>
+                                <option value="primaria">Primaria</option>
+                                <option value="secundaria">Secundaria</option>
+                                <option value="tecnico">Técnico</option>
+                                <option value="universitario">Universitario</option>
+                                <option value="posgrado">Posgrado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Deudas Actuales</label>
+                                <select id="riesgoDeudas" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="ninguna">Ninguna</option>
+                                    <option value="1-2">1-2 deudas</option>
+                                    <option value="3-5">3-5 deudas</option>
+                                    <option value="mas5">Más de 5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Activos</label>
+                                <select id="riesgoActivos" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="ninguno">Ninguno</option>
+                                    <option value="vehiculo">Vehículo</option>
+                                    <option value="inmueble">Inmueble</option>
+                                    <option value="ambos">Ambos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ingresos Mensuales</label>
+                            <input type="range" id="riesgoIngresos" class="form-range" min="500000" max="20000000" step="100000" value="2500000">
+                            <div class="range-value">Valor: <span id="ingresosValue">$2,500,000</span></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Gastos Mensuales (sin pagos de créditos)</label>
+                            <input type="range" id="riesgoGastos" class="form-range" min="200000" max="15000000" step="100000" value="1500000">
+                            <div class="range-value">Valor: <span id="gastosValue">$1,500,000</span></div>
+                        </div>
+                    </div>
+
+                    <button class="btn-calculate risk" id="btnCalcularRiesgo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        Calcular Riesgo
+                    </button>
+                </div>
+
+                <div class="risk-results animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="result-section">
+                        <h3 class="result-section-title">Resultado</h3>
+                        
+                        <div class="diagnosis-card">
+                            <div class="diagnosis-label">Diagnóstico</div>
+                            <div class="diagnosis-badge" id="riskLevelBadge">
+                                Nivel de Riesgo
+                            </div>
+                        </div>
+
+                        <div class="probability-card">
+                            <div class="probability-label">Probabilidad de Aprobación</div>
+                            <div class="probability-value" id="probabilityValue">0%</div>
+                            <div class="probability-bar">
+                                <div class="probability-fill" id="probabilityFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3 class="result-section-title">Análisis Detallado</h3>
+                        <div class="analysis-chart">
+                            <canvas id="riskChart"></canvas>
+                        </div>
+                        <div class="analysis-factors" id="analysisFactors">
+                            <div class="factor-item">
+                                <span class="factor-name">Capacidad de Pago</span>
+                                <div class="factor-bar"><div class="factor-fill" style="width: 0%"></div></div>
+                            </div>
+                            <div class="factor-item">
+                                <span class="factor-name">Estabilidad</span>
+                                <div class="factor-bar"><div class="factor-fill" style="width: 0%"></div></div>
+                            </div>
+                            <div class="factor-item">
+                                <span class="factor-name">Historial</span>
+                                <div class="factor-bar"><div class="factor-fill" style="width: 0%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/tools.js"></script>
+</body>
+</html>

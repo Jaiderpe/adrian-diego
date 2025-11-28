@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Crédito - LexFinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/tools.css">
+</head>
+<body class="tool-page">
+    <!-- Header -->
+    <header class="tool-header">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver
+        </a>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3L2 8v13l10 5 10-5V8L12 3z"/>
+                    <path d="M12 22v-9"/>
+                </svg>
+            </div>
+            <span class="logo-text">LexFinance</span>
+        </div>
+    </header>
+
+    <main class="tool-main">
+        <div class="tool-container animate-fade-in">
+            <div class="tool-hero">
+                <div class="tool-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                        <line x1="8" y1="6" x2="16" y2="6"/>
+                        <line x1="8" y1="10" x2="16" y2="10"/>
+                    </svg>
+                    Herramienta Financiera
+                </div>
+                <h1 class="tool-page-title">Calculadora de Crédito</h1>
+                <p class="tool-page-subtitle">Calcula la amortización de tu crédito y conoce el detalle de cada cuota mensual.</p>
+            </div>
+
+            <div class="calculator-grid">
+                <div class="calc-form animate-slide-up">
+                    <div class="form-group">
+                        <label class="form-label">Monto del Crédito</label>
+                        <div class="input-with-icon">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="creditMonto" class="form-input" placeholder="100,000" min="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tiempo (Meses)</label>
+                        <input type="number" id="creditTiempo" class="form-input" placeholder="12" min="1" max="360">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tasa de Interés Anual (%)</label>
+                        <div class="input-with-icon">
+                            <input type="number" id="creditInteres" class="form-input" placeholder="12" min="0" max="100" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card animate-pulse-border">
+                        <div class="result-label">Cuota Mensual</div>
+                        <div class="result-value" id="cuotaMensual">$0</div>
+                    </div>
+
+                    <button class="btn-calculate" id="btnCalcularCredito">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Calcular Amortización
+                    </button>
+                </div>
+
+                <div class="calc-results animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="results-header">
+                        <h3>Tabla de Amortización</h3>
+                        <button class="btn-export" id="btnExportExcel">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Exportar Excel
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="amortization-table">
+                            <thead>
+                                <tr>
+                                    <th>Mes</th>
+                                    <th>Cuota</th>
+                                    <th>Capital</th>
+                                    <th>Interés</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="amortizationBody">
+                                <tr class="empty-row">
+                                    <td colspan="5">Ingresa los datos y calcula para ver la tabla</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-info animate-fade-in" style="animation-delay: 0.4s;">
+                <p>En esta calculadora podrás generar los valores del pago de tu crédito, además de descargarlo en Excel.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/tools.js"></script>
+</body>
+</html>

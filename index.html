@@ -60,7 +60,7 @@
 
                 <div class="nav-links">
                     <a href="#servicios">Servicios</a>
-                    <a href="#expertise">Expertise</a>
+                    <a href="#herramientas">Herramientas</a>
                     <a href="#contacto">Contacto</a>
                 </div>
 
@@ -235,10 +235,10 @@
         </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="expertise">
+    <!-- Herramientas Financieras Section -->
+    <section id="herramientas" class="expertise">
         <div class="container">
-            <div class="expertise-grid">
+            <div class="expertise-grid tools-section">
                 <div class="expertise-content">
                     <h2 class="expertise-title">Experiencia que marca la diferencia</h2>
                     <p class="expertise-text">
@@ -246,43 +246,56 @@
                         soluciones que trascienden lo convencional.
                     </p>
 
-                    <div class="expertise-list">
-                        <div class="expertise-item">
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Certificaciones internacionales en finanzas y derecho</span>
-                        </div>
-                        <div class="expertise-item">
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Tecnología de vanguardia para análisis predictivo</span>
-                        </div>
-                        <div class="expertise-item">
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Red global de contactos institucionales</span>
-                        </div>
-                        <div class="expertise-item">
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Respuesta ágil con equipos dedicados 24/7</span>
-                        </div>
-                    </div>
+                    <!-- Updated tool cards with better structure -->
+                    <div class="tools-grid">
+                        <a href="calculadora-credito.html" class="tool-card">
+                            <div class="tool-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                    <line x1="8" y1="6" x2="16" y2="6"/>
+                                    <line x1="8" y1="10" x2="16" y2="10"/>
+                                    <rect x="8" y="14" width="3" height="2"/>
+                                    <rect x="13" y="14" width="3" height="2"/>
+                                    <rect x="8" y="18" width="3" height="2"/>
+                                    <rect x="13" y="18" width="3" height="2"/>
+                                </svg>
+                            </div>
+                            <div class="tool-content">
+                                <h3 class="tool-title">Calculadora de Crédito</h3>
+                                <p class="tool-desc">Calcula amortización y pagos mensuales</p>
+                            </div>
+                            <span class="tool-arrow">→</span>
+                        </a>
 
-                    <button class="btn-primary">
-                        Conocer al Equipo
-                        <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </button>
+                        <a href="calculadora-riesgo.html" class="tool-card">
+                            <div class="tool-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M12 8v4"/>
+                                    <circle cx="12" cy="16" r="1"/>
+                                </svg>
+                            </div>
+                            <div class="tool-content">
+                                <h3 class="tool-title">Calculadora de Riesgo</h3>
+                                <p class="tool-desc">Evalúa tu perfil de riesgo financiero</p>
+                            </div>
+                            <span class="tool-arrow">→</span>
+                        </a>
+
+                        <a href="simulador-credito.html" class="tool-card">
+                            <div class="tool-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 3v18h18"/>
+                                    <path d="M7 16l4-8 4 8 4-12"/>
+                                </svg>
+                            </div>
+                            <div class="tool-content">
+                                <h3 class="tool-title">Simulador de Crédito</h3>
+                                <p class="tool-desc">Simula diferentes escenarios de crédito</p>
+                            </div>
+                            <span class="tool-arrow">→</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="expertise-card">
@@ -366,11 +379,11 @@
                 </div>
 
                 <div class="footer-links">
-                    <h4>Empresa</h4>
+                    <h4>Herramientas</h4>
                     <ul>
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Equipo</a></li>
-                        <li><a href="#">Carreras</a></li>
+                        <li><a href="calculadora-credito.html">Calculadora de Crédito</a></li>
+                        <li><a href="calculadora-riesgo.html">Calculadora de Riesgo</a></li>
+                        <li><a href="simulador-credito.html">Simulador de Crédito</a></li>
                     </ul>
                 </div>
 
