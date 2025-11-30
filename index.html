@@ -299,31 +299,38 @@
                 </div>
 
                 <div class="expertise-card">
-                    <div class="roi-card">
-                        <div class="roi-header">
-                            <div class="roi-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 3v18h18"/>
-                                    <path d="M7 16l4-8 4 8 4-16"/>
-                                </svg>
+                    <!-- Reemplazando tarjeta ROI con barra de estadísticas animada -->
+                    <div class="live-stats-card">
+                        <div class="stats-list">
+                            <div class="stat-text-item">
+                                <span class="stat-label">Casos Ganados</span>
+                                <span class="stat-value" data-target="95">0%</span>
                             </div>
-                            <div>
-                                <h3 class="roi-title">ROI Promedio</h3>
-                                <div class="roi-number">+127%</div>
-                                <p class="roi-subtitle">En estrategias de inversión implementadas</p>
+                            <div class="stat-text-item">
+                                <span class="stat-label">Capital Protegido</span>
+                                <span class="stat-value" data-target="87">0%</span>
                             </div>
-                        </div>
-
-                        <div class="roi-stats">
-                            <div class="roi-stat">
-                                <div class="roi-stat-value">$850M</div>
-                                <div class="roi-stat-label">Capital protegido</div>
+                            <div class="stat-text-item">
+                                <span class="stat-label">Proyectos Activos</span>
+                                <span class="stat-value" data-target="72">0%</span>
                             </div>
-                            <div class="roi-stat">
-                                <div class="roi-stat-value">200+</div>
-                                <div class="roi-stat-label">Casos ganados</div>
+                            <div class="stat-text-item">
+                                <span class="stat-label">Tasa de Éxito</span>
+                                <span class="stat-value" data-target="94">0%</span>
                             </div>
                         </div>
+                        
+                        <div class="chart-container">
+                            <svg class="growth-chart" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+                                <!-- Barras ascendentes alternando gris y verde -->
+                                <rect class="chart-bar bar-gray" x="30" y="130" width="50" height="70" rx="4"/>
+                                <rect class="chart-bar bar-green" x="100" y="100" width="50" height="100" rx="4"/>
+                                <rect class="chart-bar bar-gray" x="170" y="60" width="50" height="140" rx="4"/>
+                                <rect class="chart-bar bar-green" x="240" y="30" width="50" height="170" rx="4"/>
+                                <rect class="chart-bar bar-gray" x="310" y="0" width="50" height="200" rx="4"/>
+                            </svg>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -404,5 +411,31 @@
     </footer>
 
     <script src="assets/script.js"></script>
+    <!-- Agregando script para animación de estadísticas -->
+    <script>
+        // Animación de barras de estadísticas
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-value');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'), 10);
+                let current = 0;
+                const interval = setInterval(() => {
+                    current += 1;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(interval);
+                    }
+                    stat.textContent = current + '%';
+                }, 20);
+            });
+        }
+
+        // Iniciar animación cuando se carga la página
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', animateStats);
+        } else {
+            animateStats();
+        }
+    </script>
 </body>
 </html>

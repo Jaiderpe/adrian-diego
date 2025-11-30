@@ -1084,3 +1084,48 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =====================================================
+   LIVE STATS CARD - ANIMATED STATISTICS BAR
+   ===================================================== */
+/* =====================================================
+   LIVE STATS CARD - ANIMATED STATISTICS BAR
+   ===================================================== */
+.live-stats-card {
+  background: var(--color-card);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-text-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(214, 211, 209, 0.3);
+}
+
+.stat-text-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--color-muted-fg);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1rem; /* Corrected: completed the font-size declaration and removed the unexpected backslash */
+}

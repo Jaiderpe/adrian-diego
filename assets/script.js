@@ -256,4 +256,118 @@ document.addEventListener("DOMContentLoaded", () => {
   if (statsGrid) {
     statsObserver.observe(statsGrid)
   }
+
+  // =====================================================
+  // ANIMATED STATS BARS
+  // =====================================================
+  function animateStatsBar(id, targetValue, duration = 2000) {
+    const valueElement = document.getElementById(id + "Value")
+    const fillElement = document.getElementById(id + "Fill")
+
+    if (!valueElement || !fillElement) return
+
+    const startValue = 0
+    const startTime = Date.now()
+
+    function updateBar() {
+      const currentTime = Date.now()
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Easing function
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+      const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOutQuart)
+
+      valueElement.textContent = currentValue + "%"
+      fillElement.style.width = currentValue + "%"
+
+      if (progress < 1) {
+        requestAnimationFrame(updateBar)
+      }
+    }
+
+    requestAnimationFrame(updateBar)
+  }
+
+  function initStatsAnimation() {
+    // Valores iniciales para las estadísticas
+    const stats = [
+      { id: "stat1", value: 95 },
+      { id: "stat2", value: 88 },
+      { id: "stat3", value: 92 },
+      { id: "stat4", value: 78 },
+      { id: "stat5", value: 96 },
+    ]
+
+    // Animar todas las barras con un pequeño delay entre cada una
+    stats.forEach((stat, index) => {
+      setTimeout(() => {
+        animateStatsBar(stat.id, stat.value)
+      }, index * 200)
+    })
+
+    // Re-animar las barras cada 5 segundos para simular actualización en tiempo real
+    setInterval(() => {
+      stats.forEach((stat, index) => {
+        // Variar ligeramente el valor para simular cambios
+        const variation = Math.floor(Math.random() * 5) - 2
+        const newValue = Math.max(70, Math.min(100, stat.value + variation))
+
+        setTimeout(() => {
+          animateStatsBar(stat.id, newValue, 1500)
+        }, index * 200)
+      })
+    }, 5000)
+  }
+
+  // Iniciar animaciones de estadísticas
+  initStatsAnimation()
+
+  // =====================================================
+  // ANIMATION DE BARRAS DE ESTADÍSTICAS EN MOVIMIENTO CONSTANTE
+  // =====================================================
+  function animateLiveStats() {
+    const stats = [
+      { id: 1, max: 98, label: "Clientes Satisfechos" },
+      { id: 2, max: 95, label: "Casos Ganados" },
+      { id: 3, max: 87, label: "Capital Protegido" },
+      { id: 4, max: 73, label: "Proyectos Activos" },
+      { id: 5, max: 96, label: "Tasa de Éxito" },
+    ]
+
+    stats.forEach((stat) => {
+      const fillElement = document.getElementById(`stat${stat.id}Fill`)
+      const valueElement = document.getElementById(`stat${stat.id}Value`)
+
+      if (!fillElement || !valueElement) return
+
+      let currentValue = 0
+      const targetValue = stat.max
+
+      // Animación inicial
+      setTimeout(() => {
+        currentValue = targetValue
+        fillElement.style.width = `${currentValue}%`
+        valueElement.textContent = `${currentValue}%`
+      }, stat.id * 200)
+
+      // Animación continua
+      setInterval(
+        () => {
+          const variation = Math.random() * 6 - 3 // Variación de ±3%
+          const newValue = Math.max(stat.max - 8, Math.min(stat.max, currentValue + variation))
+
+          currentValue = Math.round(newValue)
+          fillElement.style.width = `${currentValue}%`
+          valueElement.textContent = `${currentValue}%`
+        },
+        2000 + stat.id * 500,
+      )
+    })
+  }
+
+  // Iniciar animación de estadísticas si existe el elemento
+  if (document.querySelector(".live-stats-card")) {
+    animateLiveStats()
+  }
 })
