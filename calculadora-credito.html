@@ -51,7 +51,8 @@
                         <label class="form-label">Monto del Crédito</label>
                         <div class="input-with-icon">
                             <span class="input-prefix">$</span>
-                            <input type="number" id="creditMonto" class="form-input" placeholder="100,000" min="1000">
+                            <!-- Agregado data-format="currency" para formateo con puntos -->
+                            <input type="text" id="creditMonto" class="form-input format-number" placeholder="100.000" data-format="currency">
                         </div>
                     </div>
 

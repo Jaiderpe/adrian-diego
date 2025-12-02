@@ -6,13 +6,13 @@
 
 :root {
   --color-bg: #fafaf9;
-  --color-fg: #1c1917;
+  --color-fg: #0a0908; /* Más oscuro para mejor legibilidad */
   --color-primary: #166534;
   --color-primary-light: #22c55e;
   --color-secondary: #292524;
   --color-accent: #d4af37;
   --color-muted: #e7e5e4;
-  --color-muted-fg: #78716c;
+  --color-muted-fg: #57534e; /* Un poco más oscuro */
   --color-border: #d6d3d1;
   --color-card: #ffffff;
   --transition: all 0.3s ease;
@@ -327,6 +327,31 @@ body {
   animation: textGlow 3s ease-in-out infinite;
 }
 
+/* Animación de entrada para "impulsa" - viene desde la izquierda */
+.impulsa-animate {
+  display: inline-block;
+  animation: slideInFromLeft 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards, textGlow 3s ease-in-out 1.5s infinite;
+  opacity: 0;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px) rotate(-15deg) scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(20px) rotate(5deg) scale(1.1);
+  }
+  80% {
+    transform: translateX(-10px) rotate(-2deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--color-muted-fg);
@@ -437,7 +462,7 @@ body {
   position: relative;
   padding: 80px 0;
   background: rgba(231, 229, 228, 0.3);
-  overflow: visible; /* Changed from hidden to visible for sticky to work */
+  overflow: visible;
 }
 
 .section-header {
@@ -461,20 +486,57 @@ body {
   line-height: 1.6;
 }
 
-/* Completely rewritten card stack container */
+/* Contenedor de cards - sticky solo en móvil */
 .cards-stack-container {
   position: relative;
-  max-width: 500px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60vh;
 }
 
-/* Service Card Base Styles */
 .service-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 32px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+  position: sticky;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);
+  min-height: 200px;
+  margin-bottom: 30px;
+  will-change: transform;
+}
+
+/* Posiciones sticky para móvil */
+.service-card:nth-child(1) {
+  top: 80px;
+  z-index: 101;
+}
+.service-card:nth-child(2) {
+  top: 100px;
+  z-index: 102;
+}
+.service-card:nth-child(3) {
+  top: 120px;
+  z-index: 103;
+}
+.service-card:nth-child(4) {
+  top: 140px;
+  z-index: 104;
+}
+.service-card:nth-child(5) {
+  top: 160px;
+  z-index: 105;
+}
+.service-card:nth-child(6) {
+  top: 180px;
+  z-index: 106;
+}
+
+.service-card.is-stacked {
+  transform: scale(0.96);
+  opacity: 0.85;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .service-icon {
@@ -508,68 +570,9 @@ body {
   font-size: 15px;
 }
 
-/* =====================================================
-   CARD STACKING EFFECT - MOBILE & TABLET (< 1024px)
-   Complete rewrite with more robust sticky implementation
-   ===================================================== */
-@media (max-width: 1023px) {
-  .cards-stack-container {
-    display: flex;
-    flex-direction: column;
-    /* Critical: Space for all cards to stack at the end */
-    padding-bottom: 70vh;
-  }
-
-  .service-card {
-    /* CRITICAL: Force sticky positioning */
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    /* Strong shadow for depth perception */
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);
-    /* Minimum height ensures visibility */
-    min-height: 200px;
-    /* Spacing between cards for scroll activation */
-    margin-bottom: 30px;
-  }
-
-  /* Staggered top positions */
-  .service-card:nth-child(1) {
-    top: 80px;
-    z-index: 101;
-  }
-  .service-card:nth-child(2) {
-    top: 100px;
-    z-index: 102;
-  }
-  .service-card:nth-child(3) {
-    top: 120px;
-    z-index: 103;
-  }
-  .service-card:nth-child(4) {
-    top: 140px;
-    z-index: 104;
-  }
-  .service-card:nth-child(5) {
-    top: 160px;
-    z-index: 105;
-  }
-  .service-card:nth-child(6) {
-    top: 180px;
-    z-index: 106;
-  }
-
-  /* Stacked state - when card is pinned */
-  .service-card.is-stacked {
-    transform: scale(0.96);
-    opacity: 0.85;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* Very small screens */
 @media (max-width: 480px) {
   .cards-stack-container {
-    padding-bottom: 80vh;
+    padding-bottom: 70vh;
   }
 
   .service-card {
@@ -598,34 +601,55 @@ body {
   }
 }
 
-/* =====================================================
-   DESKTOP: 3-Column Grid (No Stacking)
-   ===================================================== */
-@media (min-width: 1024px) {
+/* En PC: aplicar sticky también para efecto de apilamiento */
+@media (min-width: 768px) {
   .cards-stack-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 100%;
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-bottom: 50vh;
   }
 
   .service-card {
-    position: relative !important;
-    top: auto !important;
-    z-index: auto !important;
-    margin-bottom: 0;
-    min-height: auto;
+    position: sticky;
+    margin-bottom: 25px;
   }
 
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  /* Posiciones sticky para PC con más separación */
+  .service-card:nth-child(1) {
+    top: 90px;
+    z-index: 101;
+  }
+  .service-card:nth-child(2) {
+    top: 115px;
+    z-index: 102;
+  }
+  .service-card:nth-child(3) {
+    top: 140px;
+    z-index: 103;
+  }
+  .service-card:nth-child(4) {
+    top: 165px;
+    z-index: 104;
+  }
+  .service-card:nth-child(5) {
+    top: 190px;
+    z-index: 105;
+  }
+  .service-card:nth-child(6) {
+    top: 215px;
+    z-index: 106;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-stack-container {
+    max-width: 800px;
   }
 
-  .service-card.is-stacked {
-    transform: none;
-    opacity: 1;
+  .service-card {
+    padding: 36px;
   }
 }
 
@@ -657,7 +681,6 @@ body {
   margin-bottom: 32px;
 }
 
-/* Added tools grid and cards styles */
 .tools-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -788,27 +811,6 @@ body {
     font-size: 1.25rem;
   }
 }
-/* End tools styles */
-
-.expertise-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.expertise-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.check-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
 
 .expertise-card {
   perspective: 1000px;
@@ -821,66 +823,6 @@ body {
   padding: 32px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   animation: floatTilt 8s ease-in-out infinite;
-}
-
-.roi-header {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.roi-icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(22, 101, 52, 0.1);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.roi-icon svg {
-  width: 24px;
-  height: 24px;
-  color: var(--color-primary);
-}
-
-.roi-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.roi-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.roi-subtitle {
-  font-size: 14px;
-  color: var(--color-muted-fg);
-  margin-top: 4px;
-}
-
-.roi-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--color-border);
-}
-
-.roi-stat-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-fg);
-}
-
-.roi-stat-label {
-  font-size: 14px;
-  color: var(--color-muted-fg);
 }
 
 @media (min-width: 1024px) {
@@ -1073,7 +1015,6 @@ body {
   }
 }
 
-/* Animate on scroll */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -1088,9 +1029,6 @@ body {
 /* =====================================================
    LIVE STATS CARD - ANIMATED STATISTICS BAR
    ===================================================== */
-/* =====================================================
-   LIVE STATS CARD - ANIMATED STATISTICS BAR
-   ===================================================== */
 .live-stats-card {
   background: var(--color-card);
   border-radius: 20px;
@@ -1099,7 +1037,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 .stats-list {
@@ -1120,12 +1058,163 @@ body {
   border-bottom: none;
 }
 
-.stat-label {
+.stat-text-item .stat-label {
   font-size: 14px;
   color: var(--color-muted-fg);
   font-weight: 500;
 }
 
 .stat-value {
-  font-size: 1rem; /* Corrected: completed the font-size declaration and removed the unexpected backslash */
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Gráfico de barras más compacto y completo */
+.chart-container {
+  width: 100%;
+  flex: 1;
+  min-height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+
+.growth-chart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Animación de barras más suave y controlada con scaleY limitado */
+.chart-bar {
+  transition: none;
+  transform-origin: center bottom;
+}
+
+.bar-gray {
+  fill: #e5e7eb;
+}
+
+.bar-green {
+  fill: var(--color-primary);
+}
+
+/* Animaciones suaves con escala controlada (0.88 - 1.0) */
+.chart-bar.bar-1 {
+  animation: barPulse1 4s ease-in-out infinite;
+}
+.chart-bar.bar-2 {
+  animation: barPulse2 4s ease-in-out infinite 0.4s;
+}
+.chart-bar.bar-3 {
+  animation: barPulse3 4s ease-in-out infinite 0.8s;
+}
+.chart-bar.bar-4 {
+  animation: barPulse4 4s ease-in-out infinite 1.2s;
+}
+.chart-bar.bar-5 {
+  animation: barPulse5 4s ease-in-out infinite 1.6s;
+}
+
+/* Keyframes completos con escala controlada */
+@keyframes barPulse1 {
+  0%,
+  100% {
+    transform: scaleY(0.88);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes barPulse2 {
+  0%,
+  100% {
+    transform: scaleY(0.92);
+  }
+  50% {
+    transform: scaleY(0.88);
+  }
+}
+
+@keyframes barPulse3 {
+  0%,
+  100% {
+    transform: scaleY(0.9);
+  }
+  50% {
+    transform: scaleY(0.95);
+  }
+}
+
+@keyframes barPulse4 {
+  0%,
+  100% {
+    transform: scaleY(0.95);
+  }
+  50% {
+    transform: scaleY(0.88);
+  }
+}
+
+@keyframes barPulse5 {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.9);
+  }
+}
+
+/* Animación de la línea de tendencia */
+.trend-line {
+  animation: trendPulse 4s ease-in-out infinite;
+}
+
+@keyframes trendPulse {
+  0%,
+  100% {
+    opacity: 1;
+    stroke-width: 3;
+  }
+  50% {
+    opacity: 0.8;
+    stroke-width: 4;
+  }
+}
+
+/* Animación de los puntos de tendencia */
+.trend-dot {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+.trend-dot:nth-child(7) {
+  animation-delay: 0s;
+}
+.trend-dot:nth-child(8) {
+  animation-delay: 0.2s;
+}
+.trend-dot:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.trend-dot:nth-child(10) {
+  animation-delay: 0.6s;
+}
+.trend-dot:nth-child(11) {
+  animation-delay: 0.8s;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    r: 5;
+    opacity: 1;
+  }
+  50% {
+    r: 7;
+    opacity: 0.9;
+  }
 }

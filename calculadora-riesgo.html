@@ -61,7 +61,8 @@
 
                         <div class="form-group">
                             <label class="form-label">Teléfono</label>
-                            <input type="tel" id="riesgoTelefono" class="form-input" placeholder="+57 300 123 4567">
+                            <!-- Agregado clase format-number para formateo con puntos -->
+                            <input type="text" id="riesgoTelefono" class="form-input format-phone" placeholder="300 123 4567">
                         </div>
 
                         <div class="form-group">
@@ -157,13 +158,13 @@
                         <div class="form-group">
                             <label class="form-label">Ingresos Mensuales</label>
                             <input type="range" id="riesgoIngresos" class="form-range" min="500000" max="20000000" step="100000" value="2500000">
-                            <div class="range-value">Valor: <span id="ingresosValue">$2,500,000</span></div>
+                            <div class="range-value">Valor: <span id="ingresosValue">$2.500.000</span></div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Gastos Mensuales (sin pagos de créditos)</label>
                             <input type="range" id="riesgoGastos" class="form-range" min="200000" max="15000000" step="100000" value="1500000">
-                            <div class="range-value">Valor: <span id="gastosValue">$1,500,000</span></div>
+                            <div class="range-value">Valor: <span id="gastosValue">$1.500.000</span></div>
                         </div>
                     </div>
 

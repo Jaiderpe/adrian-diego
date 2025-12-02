@@ -59,6 +59,7 @@
                 </div>
 
                 <div class="nav-links">
+                    <a href="#inicio">Inicio</a>
                     <a href="#servicios">Servicios</a>
                     <a href="#herramientas">Herramientas</a>
                     <a href="#contacto">Contacto</a>
@@ -76,7 +77,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <!-- Agregado id="inicio" para el scroll del botón de inicio -->
+    <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="badge">
                 <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -86,8 +88,9 @@
                 <span>+15 años de experiencia en el sector</span>
             </div>
 
+            <!-- Agregada clase para animación de entrada de "impulsa" -->
             <h1 class="hero-title">
-                Asesoría que <span class="highlight">impulsa</span> tu crecimiento
+                Asesoría que <span class="highlight impulsa-animate">impulsa</span> tu crecimiento
             </h1>
 
             <p class="hero-subtitle">
@@ -298,8 +301,8 @@
                     </div>
                 </div>
 
+                <!-- Tarjeta de estadísticas con clases para animación de barras -->
                 <div class="expertise-card">
-                    <!-- Reemplazando tarjeta ROI con barra de estadísticas animada -->
                     <div class="live-stats-card">
                         <div class="stats-list">
                             <div class="stat-text-item">
@@ -321,16 +324,32 @@
                         </div>
                         
                         <div class="chart-container">
-                            <svg class="growth-chart" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-                                <!-- Barras ascendentes alternando gris y verde -->
-                                <rect class="chart-bar bar-gray" x="30" y="130" width="50" height="70" rx="4"/>
-                                <rect class="chart-bar bar-green" x="100" y="100" width="50" height="100" rx="4"/>
-                                <rect class="chart-bar bar-gray" x="170" y="60" width="50" height="140" rx="4"/>
-                                <rect class="chart-bar bar-green" x="240" y="30" width="50" height="170" rx="4"/>
-                                <rect class="chart-bar bar-gray" x="310" y="0" width="50" height="200" rx="4"/>
+                            <svg class="growth-chart" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet">
+                                <!-- Barras con clases para animación continua -->
+                                <rect class="chart-bar bar-gray bar-1" x="20" y="130" width="45" height="70" rx="4"/>
+                                <rect class="chart-bar bar-green bar-2" x="80" y="100" width="45" height="100" rx="4"/>
+                                <rect class="chart-bar bar-gray bar-3" x="140" y="70" width="45" height="130" rx="4"/>
+                                <rect class="chart-bar bar-green bar-4" x="200" y="45" width="45" height="155" rx="4"/>
+                                <rect class="chart-bar bar-gray bar-5" x="260" y="25" width="45" height="175" rx="4"/>
+                                
+                                <!-- Línea de tendencia -->
+                                <polyline 
+                                    class="trend-line" 
+                                    points="42,120 102,90 162,60 222,35 282,15" 
+                                    fill="none" 
+                                    stroke="var(--color-primary)" 
+                                    stroke-width="3" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"
+                                />
+                                <!-- Puntos en la línea de tendencia -->
+                                <circle class="trend-dot" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" cx="222" cy="35" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" cx="282" cy="15" r="5" fill="var(--color-primary)"/>
                             </svg>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -375,7 +394,6 @@
                         Excelencia en asesoría técnica financiera y jurídica desde 2008.
                     </p>
                 </div>
-
                 <div class="footer-links">
                     <h4>Servicios</h4>
                     <ul>
@@ -384,58 +402,29 @@
                         <li><a href="#">Compliance</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
                     <h4>Herramientas</h4>
                     <ul>
                         <li><a href="calculadora-credito.html">Calculadora de Crédito</a></li>
                         <li><a href="calculadora-riesgo.html">Calculadora de Riesgo</a></li>
-                        <li><a href="simulador-credito.html">Simulador de Crédito</a></li>
+                        <li><a href="simulador-credito.html">Simulador</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
-                    <h4>Legal</h4>
+                    <h4>Contacto</h4>
                     <ul>
-                        <li><a href="#">Privacidad</a></li>
-                        <li><a href="#">Términos</a></li>
-                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">contacto@lexfinance.com</a></li>
+                        <li><a href="#">+57 1 234 5678</a></li>
+                        <li><a href="#">Bogotá, Colombia</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2025 LexFinance. Todos los derechos reservados.</p>
+                <p>© 2025 LexFinance. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="assets/script.js"></script>
-    <!-- Agregando script para animación de estadísticas -->
-    <script>
-        // Animación de barras de estadísticas
-        function animateStats() {
-            const stats = document.querySelectorAll('.stat-value');
-            stats.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-target'), 10);
-                let current = 0;
-                const interval = setInterval(() => {
-                    current += 1;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(interval);
-                    }
-                    stat.textContent = current + '%';
-                }, 20);
-            });
-        }
-
-        // Iniciar animación cuando se carga la página
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', animateStats);
-        } else {
-            animateStats();
-        }
-    </script>
 </body>
 </html>

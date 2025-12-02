@@ -2,6 +2,8 @@
 // Complete implementation with all calculations
 
 document.addEventListener("DOMContentLoaded", () => {
+  initNumberFormatting()
+
   // Detect which tool page we're on and initialize
   if (document.getElementById("btnCalcularCredito")) {
     initCreditCalculator()
@@ -14,18 +16,57 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
+function initNumberFormatting() {
+  const formatInputs = document.querySelectorAll(".format-number")
+
+  formatInputs.forEach((input) => {
+    input.addEventListener("input", function (e) {
+      const value = this.value.replace(/\D/g, "") // Solo números
+      if (value) {
+        // Formatear con puntos como separador de miles
+        this.value = formatWithDots(value)
+      }
+    })
+
+    input.addEventListener("focus", function () {
+      // Al enfocar, mover cursor al final
+      const len = this.value.length
+      setTimeout(() => this.setSelectionRange(len, len), 0)
+    })
+  })
+
+  // Formatear teléfonos
+  const phoneInputs = document.querySelectorAll(".format-phone")
+  phoneInputs.forEach((input) => {
+    input.addEventListener("input", function (e) {
+      let value = this.value.replace(/\D/g, "")
+      if (value.length > 10) value = value.slice(0, 10)
+
+      // Formato: XXX XXX XXXX
+      let formatted = ""
+      if (value.length > 0) formatted = value.slice(0, 3)
+      if (value.length > 3) formatted += " " + value.slice(3, 6)
+      if (value.length > 6) formatted += " " + value.slice(6, 10)
+
+      this.value = formatted
+    })
+  })
+}
+
+function formatWithDots(numStr) {
+  return numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+}
+
+function getNumericValue(input) {
+  if (!input) return 0
+  const value = input.value.replace(/\./g, "").replace(/,/g, "")
+  return Number.parseFloat(value) || 0
+}
+
 // ========== CALCULADORA DE CRÉDITO (AMORTIZACIÓN) ==========
 function initCreditCalculator() {
   const btnCalcular = document.getElementById("btnCalcularCredito")
   const btnExport = document.getElementById("btnExportExcel")
-
-  // Format input on blur
-  const montoInput = document.getElementById("creditMonto")
-  montoInput.addEventListener("blur", function () {
-    if (this.value) {
-      this.setAttribute("data-raw", this.value)
-    }
-  })
 
   btnCalcular.addEventListener("click", calculateAmortization)
   btnExport.addEventListener("click", exportToExcel)
@@ -39,7 +80,7 @@ function initCreditCalculator() {
 }
 
 function calculateAmortization() {
-  const monto = Number.parseFloat(document.getElementById("creditMonto").value)
+  const monto = getNumericValue(document.getElementById("creditMonto"))
   const tiempo = Number.parseInt(document.getElementById("creditTiempo").value)
   const interesAnual = Number.parseFloat(document.getElementById("creditInteres").value)
 
@@ -393,7 +434,7 @@ function initCreditSimulator() {
   const purposeSelect = document.getElementById("simPurpose")
   ;[montoInput, plazoSelect, purposeSelect].forEach((el) => {
     el.addEventListener("change", () => {
-      if (montoInput.value && plazoSelect.value && purposeSelect.value) {
+      if (getNumericValue(montoInput) && plazoSelect.value && purposeSelect.value) {
         simulateCredit()
       }
     })
@@ -402,7 +443,7 @@ function initCreditSimulator() {
 
 function simulateCredit() {
   const purpose = document.getElementById("simPurpose").value
-  const monto = Number.parseFloat(document.getElementById("simMonto").value)
+  const monto = getNumericValue(document.getElementById("simMonto"))
   const plazo = Number.parseInt(document.getElementById("simPlazo").value)
 
   // Validation
@@ -411,7 +452,7 @@ function simulateCredit() {
     return
   }
   if (isNaN(monto) || monto < 100000) {
-    showAlert("Por favor ingresa un monto válido (mínimo $100,000)")
+    showAlert("Por favor ingresa un monto válido (mínimo $100.000)")
     return
   }
   if (!plazo) {
@@ -611,86 +652,12 @@ alertStyles.textContent = `
   .custom-alert .alert-close {
     background: none;
     border: none;
-    padding: 0;
-    width: 20px;
-    height: 20px;
     cursor: pointer;
+    padding: 4px;
     color: #9ca3af;
     transition: color 0.2s;
   }
   .custom-alert .alert-close:hover { color: #374151; }
-  
-  /* Additional animation classes */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .animate-pop {
-    animation: pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
-  
-  .result-card.pulse {
-    animation: pulse-border 1s ease;
-  }
-  @keyframes pulse-border {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(24, 79, 59, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(24, 79, 59, 0); }
-  }
-  
-  .sim-result-card.calculated {
-    animation: highlight 0.5s ease;
-  }
-  @keyframes highlight {
-    0% { background: rgba(24, 79, 59, 0.1); }
-    100% { background: white; }
-  }
-  
-  /* Totals row styling */
-  .totals-row {
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    font-weight: 600;
-  }
-  .totals-row td {
-    border-top: 2px solid var(--color-primary);
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-  }
-  
-  /* Month badge */
-  .month-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: var(--color-primary);
-    color: white;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  /* Currency styling in table */
-  .currency.capital { color: var(--color-primary); }
-  .currency.interest { color: #f59e0b; }
-  .currency.balance { color: #6b7280; }
-  
-  /* Probability bar colors */
-  .probability-fill.low { background: linear-gradient(90deg, #10b981, #34d399); }
-  .probability-fill.medium { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
-  .probability-fill.high { background: linear-gradient(90deg, #ef4444, #f87171); }
-  .probability-fill.very-high { background: linear-gradient(90deg, #7f1d1d, #ef4444); }
-  
-  /* Risk badge colors */
-  .diagnosis-badge.low { background: linear-gradient(135deg, #10b981, #059669); }
-  .diagnosis-badge.medium { background: linear-gradient(135deg, #f59e0b, #d97706); }
-  .diagnosis-badge.high { background: linear-gradient(135deg, #ef4444, #dc2626); }
-  .diagnosis-badge.very-high { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
+  .custom-alert .alert-close svg { width: 18px; height: 18px; }
 `
 document.head.appendChild(alertStyles)
