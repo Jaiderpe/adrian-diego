@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   window.scrollTo(0, 0)
 
-  // También asegurar que el hero sea visible
   const heroSection = document.getElementById("hero")
   if (heroSection) {
     heroSection.scrollIntoView({ behavior: "instant", block: "start" })
@@ -217,4 +216,104 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   animateStats()
+
+  // =====================================================
+  // ANIMACIÓN DE ONDA PARA BARRAS DE ESTADÍSTICAS
+  // =====================================================
+  function initChartWaveAnimation() {
+    const bars = document.querySelectorAll(".chart-bar")
+    const trendLine = document.querySelector(".trend-line")
+    const trendDots = document.querySelectorAll(".trend-dot")
+
+    if (bars.length === 0) return
+
+    const barConfig = [
+      { originalHeight: 70, originalY: 130, minScale: 0.09, maxScale: 1.0 }, // Baja casi al 0%
+      { originalHeight: 100, originalY: 100, minScale: 0.03, maxScale: 1.0 }, // Baja casi al 0%
+      { originalHeight: 130, originalY: 70, minScale: 0.11, maxScale: 1.0 }, // Baja casi al 0%
+      { originalHeight: 155, originalY: 45, minScale: 0.13, maxScale: 1.0 }, // Baja casi al 0%
+      { originalHeight: 175, originalY: 25, minScale: 0.15, maxScale: 1.0 }, // Baja casi al 0%
+    ]
+
+    // Puntos originales de la línea de tendencia
+    const originalPoints = [
+      { x: 42, y: 120 },
+      { x: 102, y: 90 },
+      { x: 162, y: 60 },
+      { x: 222, y: 35 },
+      { x: 282, y: 15 },
+    ]
+
+    let startTime = null
+    const duration = 4000 // 4 segundos para un ciclo completo
+
+    function animateWave(timestamp) {
+      if (!startTime) startTime = timestamp
+      const elapsed = timestamp - startTime
+
+      // Calcular fase de la onda (0 a 2*PI)
+      const phase = (elapsed / duration) * Math.PI * 2
+
+      bars.forEach((bar, index) => {
+        const config = barConfig[index]
+        if (!config) return
+
+        const barPhase = phase - index * 0.7
+
+        // Calcular escala usando seno para movimiento suave
+        const scaleRange = config.maxScale - config.minScale
+        const scale = config.minScale + scaleRange * (0.5 + 0.5 * Math.sin(barPhase))
+
+        // Calcular nueva altura y posición Y
+        const newHeight = config.originalHeight * scale
+        const newY = config.originalY + (config.originalHeight - newHeight)
+
+        // Aplicar transformación
+        bar.setAttribute("height", newHeight.toFixed(2))
+        bar.setAttribute("y", newY.toFixed(2))
+      })
+
+      if (trendLine && trendDots.length > 0) {
+        const newPoints = originalPoints.map((point, index) => {
+          const config = barConfig[index]
+          if (!config) return point
+
+          const barPhase = phase - index * 0.7
+          const scaleRange = config.maxScale - config.minScale
+          const scale = config.minScale + scaleRange * (0.5 + 0.5 * Math.sin(barPhase))
+
+          // Ajustar Y del punto según la escala de la barra - movimiento más amplio
+          const heightDiff = config.originalHeight * (1 - scale)
+          const newY = point.y + heightDiff * 0.8
+
+          return { x: point.x, y: newY }
+        })
+
+        // Actualizar polyline
+        const pointsString = newPoints.map((p) => `${p.x},${p.y.toFixed(2)}`).join(" ")
+        trendLine.setAttribute("points", pointsString)
+
+        // Actualizar puntos
+        trendDots.forEach((dot, index) => {
+          if (newPoints[index]) {
+            dot.setAttribute("cy", newPoints[index].y.toFixed(2))
+
+            // Efecto de pulso en los puntos
+            const dotPhase = phase - index * 0.7
+            const dotScale = 0.6 + 0.6 * (0.5 + 0.5 * Math.sin(dotPhase * 2))
+            dot.setAttribute("r", (5 * dotScale).toFixed(2))
+          }
+        })
+      }
+
+      // Continuar la animación
+      requestAnimationFrame(animateWave)
+    }
+
+    // Iniciar la animación
+    requestAnimationFrame(animateWave)
+  }
+
+  // Iniciar animación del gráfico
+  initChartWaveAnimation()
 })

@@ -1070,7 +1070,7 @@ body {
   color: var(--color-primary);
 }
 
-/* Gráfico de barras más compacto y completo */
+/* Gráfico de barras */
 .chart-container {
   width: 100%;
   flex: 1;
@@ -1087,12 +1087,6 @@ body {
   overflow: visible;
 }
 
-/* Animación de barras más suave y controlada con scaleY limitado */
-.chart-bar {
-  transition: none;
-  transform-origin: center bottom;
-}
-
 .bar-gray {
   fill: #e5e7eb;
 }
@@ -1101,120 +1095,24 @@ body {
   fill: var(--color-primary);
 }
 
-/* Animaciones suaves con escala controlada (0.88 - 1.0) */
+/* Animación de ola fluida y continua para las barras - escala suave */
+.chart-bar {
+  transform-origin: center bottom;
+  transform-box: fill-box;
+}
+
 .chart-bar.bar-1 {
-  animation: barPulse1 4s ease-in-out infinite;
+  animation: waveBar1 4s ease-in-out infinite;
 }
 .chart-bar.bar-2 {
-  animation: barPulse2 4s ease-in-out infinite 0.4s;
+  animation: waveBar2 4s ease-in-out infinite;
 }
 .chart-bar.bar-3 {
-  animation: barPulse3 4s ease-in-out infinite 0.8s;
+  animation: waveBar3 4s ease-in-out infinite;
 }
 .chart-bar.bar-4 {
-  animation: barPulse4 4s ease-in-out infinite 1.2s;
+  animation: waveBar4 4s ease-in-out infinite;
 }
 .chart-bar.bar-5 {
-  animation: barPulse5 4s ease-in-out infinite 1.6s;
-}
-
-/* Keyframes completos con escala controlada */
-@keyframes barPulse1 {
-  0%,
-  100% {
-    transform: scaleY(0.88);
-  }
-  50% {
-    transform: scaleY(1);
-  }
-}
-
-@keyframes barPulse2 {
-  0%,
-  100% {
-    transform: scaleY(0.92);
-  }
-  50% {
-    transform: scaleY(0.88);
-  }
-}
-
-@keyframes barPulse3 {
-  0%,
-  100% {
-    transform: scaleY(0.9);
-  }
-  50% {
-    transform: scaleY(0.95);
-  }
-}
-
-@keyframes barPulse4 {
-  0%,
-  100% {
-    transform: scaleY(0.95);
-  }
-  50% {
-    transform: scaleY(0.88);
-  }
-}
-
-@keyframes barPulse5 {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(0.9);
-  }
-}
-
-/* Animación de la línea de tendencia */
-.trend-line {
-  animation: trendPulse 4s ease-in-out infinite;
-}
-
-@keyframes trendPulse {
-  0%,
-  100% {
-    opacity: 1;
-    stroke-width: 3;
-  }
-  50% {
-    opacity: 0.8;
-    stroke-width: 4;
-  }
-}
-
-/* Animación de los puntos de tendencia */
-.trend-dot {
-  animation: dotPulse 2s ease-in-out infinite;
-}
-
-.trend-dot:nth-child(7) {
-  animation-delay: 0s;
-}
-.trend-dot:nth-child(8) {
-  animation-delay: 0.2s;
-}
-.trend-dot:nth-child(9) {
-  animation-delay: 0.4s;
-}
-.trend-dot:nth-child(10) {
-  animation-delay: 0.6s;
-}
-.trend-dot:nth-child(11) {
-  animation-delay: 0.8s;
-}
-
-@keyframes dotPulse {
-  0%,
-  100% {
-    r: 5;
-    opacity: 1;
-  }
-  50% {
-    r: 7;
-    opacity: 0.9;
-  }
+  animation: waveBar5 4s ease-in-out infinite;
 }
