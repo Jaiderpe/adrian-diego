@@ -1,35 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Scroll al inicio
   window.scrollTo(0, 0)
 
-  const heroSection = document.getElementById("hero")
-  if (heroSection) {
-    heroSection.scrollIntoView({ behavior: "instant", block: "start" })
-  }
-
   // =====================================================
-  // Funciona en todas las pantallas desde servicios hacia abajo
+  // CARD STACKING - Funciona en todas las pantallas
   // =====================================================
   function initCardStacking() {
     const container = document.getElementById("cardsStackContainer")
-    if (!container) {
-      return
-    }
+    if (!container) return
 
     const cards = container.querySelectorAll(".service-card")
-    const isMobile = window.innerWidth < 768
 
-    // Configurar valores de top según el tamaño de pantalla
     let topValues
     if (window.innerWidth < 480) {
       topValues = [70, 85, 100, 115, 130, 145]
     } else if (window.innerWidth < 768) {
       topValues = [80, 100, 120, 140, 160, 180]
     } else {
-      // En PC también aplicamos sticky pero con más separación
       topValues = [90, 115, 140, 165, 190, 215]
     }
 
-    // Aplicar estilos sticky a todas las tarjetas en TODAS las pantallas
     cards.forEach((card, index) => {
       card.style.position = "sticky"
       card.style.top = topValues[index] + "px"
@@ -44,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const nextCard = cards[index + 1]
           const nextRect = nextCard.getBoundingClientRect()
 
-          // Cuando la siguiente card llega cerca de la actual
           if (nextRect.top <= rect.top + 50) {
             card.classList.add("is-stacked")
           } else {
@@ -114,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // =====================================================
-  // PARALLAX EFFECT FOR FLOATING CHARTS
+  // PARALLAX EFFECT FOR FLOATING CHARTS - Más movimiento
   // =====================================================
   const floatingCharts = document.querySelectorAll(".floating-chart")
 
@@ -122,9 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollY = window.scrollY
 
     floatingCharts.forEach((chart, index) => {
-      const speed = 0.05 + index * 0.01
+      const speed = 0.08 + index * 0.02
       const yPos = scrollY * speed
-      chart.style.transform = `translateY(${-yPos}px) rotate(${scrollY * 0.01}deg)`
+      const rotation = Math.sin(scrollY * 0.002 + index) * 10
+      chart.style.transform = `translateY(${-yPos}px) rotate(${rotation}deg)`
     })
   })
 
@@ -132,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // HEADER SCROLL EFFECT
   // =====================================================
   const header = document.querySelector(".header")
-  let lastScroll = 0
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY
@@ -142,12 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       header.style.boxShadow = "none"
     }
-
-    lastScroll = currentScroll
   })
 
   // =====================================================
-  // SERVICE CARDS HOVER EFFECT (Desktop only)
+  // SERVICE CARDS HOVER EFFECT
   // =====================================================
   const serviceCards = document.querySelectorAll(".service-card")
 
@@ -168,8 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
   function animateStats() {
     const stats = document.querySelectorAll(".stat-value")
-
-    // Valores fijos para cada estadística
     const targetValues = [96, 88, 71, 95]
 
     stats.forEach((stat, index) => {
@@ -187,16 +172,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 30)
     })
 
-    // Pequeña variación periódica (controlada, sin valores negativos)
     setInterval(() => {
       stats.forEach((stat, index) => {
         const baseTarget = targetValues[index] || 90
-        const variation = Math.floor(Math.random() * 5) - 2 // -2 a +2
+        const variation = Math.floor(Math.random() * 5) - 2
         const newValue = Math.max(baseTarget - 3, Math.min(baseTarget + 3, baseTarget + variation))
-
         const currentValue = Number.parseInt(stat.textContent) || baseTarget
 
-        // Animar suavemente al nuevo valor
         const diff = newValue - currentValue
         if (diff !== 0) {
           const step = diff > 0 ? 1 : -1
@@ -218,102 +200,227 @@ document.addEventListener("DOMContentLoaded", () => {
   animateStats()
 
   // =====================================================
-  // ANIMACIÓN DE ONDA PARA BARRAS DE ESTADÍSTICAS
+  // ANIMACIÓN ROBUSTA DE BARRAS DE ESTADÍSTICAS
+  // Con movimiento fluido y escala completa
   // =====================================================
-  function initChartWaveAnimation() {
-    const bars = document.querySelectorAll(".chart-bar")
-    const trendLine = document.querySelector(".trend-line")
-    const trendDots = document.querySelectorAll(".trend-dot")
+  function initRobustChartAnimation() {
+    const bars = [
+      document.getElementById("bar1"),
+      document.getElementById("bar2"),
+      document.getElementById("bar3"),
+      document.getElementById("bar4"),
+      document.getElementById("bar5"),
+    ]
 
-    if (bars.length === 0) return
+    const trendLine = document.getElementById("trendLine")
+    const dots = [
+      document.getElementById("dot1"),
+      document.getElementById("dot2"),
+      document.getElementById("dot3"),
+      document.getElementById("dot4"),
+      document.getElementById("dot5"),
+    ]
 
+    if (!bars[0]) return
+
+    // Configuración de cada barra: altura original, Y original, posición base del punto
     const barConfig = [
-      { originalHeight: 70, originalY: 130, minScale: 0.09, maxScale: 1.0 }, // Baja casi al 0%
-      { originalHeight: 100, originalY: 100, minScale: 0.03, maxScale: 1.0 }, // Baja casi al 0%
-      { originalHeight: 130, originalY: 70, minScale: 0.11, maxScale: 1.0 }, // Baja casi al 0%
-      { originalHeight: 155, originalY: 45, minScale: 0.13, maxScale: 1.0 }, // Baja casi al 0%
-      { originalHeight: 175, originalY: 25, minScale: 0.15, maxScale: 1.0 }, // Baja casi al 0%
+      { height: 70, baseY: 130, minScale: 0, maxScale: 1, dotBaseY: 120 },
+      { height: 100, baseY: 100, minScale: 0, maxScale: 1, dotBaseY: 90 },
+      { height: 130, baseY: 70, minScale: 0, maxScale: 1, dotBaseY: 60 },
+      { height: 155, baseY: 45, minScale: 0, maxScale: 1, dotBaseY: 35 },
+      { height: 175, baseY: 25, minScale: 0, maxScale: 1, dotBaseY: 15 },
     ]
 
-    // Puntos originales de la línea de tendencia
-    const originalPoints = [
-      { x: 42, y: 120 },
-      { x: 102, y: 90 },
-      { x: 162, y: 60 },
-      { x: 222, y: 35 },
-      { x: 282, y: 15 },
-    ]
-
+    const baseY = 200 // Línea base del gráfico
+    let animationFrame
     let startTime = null
-    const duration = 4000 // 4 segundos para un ciclo completo
 
-    function animateWave(timestamp) {
+    function animate(timestamp) {
       if (!startTime) startTime = timestamp
       const elapsed = timestamp - startTime
 
-      // Calcular fase de la onda (0 a 2*PI)
-      const phase = (elapsed / duration) * Math.PI * 2
+      // Ciclo de 5 segundos para animación suave
+      const cycleDuration = 5000
+      const progress = (elapsed % cycleDuration) / cycleDuration
+
+      // Usar función seno para movimiento suave
+      const basePhase = progress * Math.PI * 2
+
+      const newPoints = []
 
       bars.forEach((bar, index) => {
+        if (!bar) return
+
         const config = barConfig[index]
-        if (!config) return
+        // Desfase entre barras para efecto de ola
+        const phaseOffset = index * 0.5
+        const phase = basePhase - phaseOffset
 
-        const barPhase = phase - index * 0.7
-
-        // Calcular escala usando seno para movimiento suave
-        const scaleRange = config.maxScale - config.minScale
-        const scale = config.minScale + scaleRange * (0.5 + 0.5 * Math.sin(barPhase))
+        // Calcular escala (0 a 1) con movimiento sinusoidal
+        // Va de 0 (completamente abajo) a 1 (completamente arriba)
+        const scale = 0.5 + 0.5 * Math.sin(phase)
 
         // Calcular nueva altura y posición Y
-        const newHeight = config.originalHeight * scale
-        const newY = config.originalY + (config.originalHeight - newHeight)
+        const newHeight = config.height * scale
+        const newY = baseY - newHeight
 
-        // Aplicar transformación
-        bar.setAttribute("height", newHeight.toFixed(2))
+        // Aplicar a la barra
+        bar.setAttribute("height", Math.max(1, newHeight).toFixed(2))
         bar.setAttribute("y", newY.toFixed(2))
+
+        // Calcular posición del punto de la línea de tendencia
+        // El punto está en la parte superior de la barra
+        const dotY = newY
+
+        if (dots[index]) {
+          dots[index].setAttribute("cy", dotY.toFixed(2))
+          // Efecto de pulso en los puntos
+          const pulseScale = 0.7 + 0.5 * Math.abs(Math.sin(phase * 1.5))
+          dots[index].setAttribute("r", (5 * pulseScale).toFixed(2))
+        }
+
+        // Guardar punto para la línea
+        const dotX = 42 + index * 60 // Posición X de cada punto
+        newPoints.push(`${dotX},${dotY.toFixed(2)}`)
       })
 
-      if (trendLine && trendDots.length > 0) {
-        const newPoints = originalPoints.map((point, index) => {
-          const config = barConfig[index]
-          if (!config) return point
-
-          const barPhase = phase - index * 0.7
-          const scaleRange = config.maxScale - config.minScale
-          const scale = config.minScale + scaleRange * (0.5 + 0.5 * Math.sin(barPhase))
-
-          // Ajustar Y del punto según la escala de la barra - movimiento más amplio
-          const heightDiff = config.originalHeight * (1 - scale)
-          const newY = point.y + heightDiff * 0.8
-
-          return { x: point.x, y: newY }
-        })
-
-        // Actualizar polyline
-        const pointsString = newPoints.map((p) => `${p.x},${p.y.toFixed(2)}`).join(" ")
-        trendLine.setAttribute("points", pointsString)
-
-        // Actualizar puntos
-        trendDots.forEach((dot, index) => {
-          if (newPoints[index]) {
-            dot.setAttribute("cy", newPoints[index].y.toFixed(2))
-
-            // Efecto de pulso en los puntos
-            const dotPhase = phase - index * 0.7
-            const dotScale = 0.6 + 0.6 * (0.5 + 0.5 * Math.sin(dotPhase * 2))
-            dot.setAttribute("r", (5 * dotScale).toFixed(2))
-          }
-        })
+      // Actualizar línea de tendencia
+      if (trendLine && newPoints.length === 5) {
+        trendLine.setAttribute("points", newPoints.join(" "))
       }
 
-      // Continuar la animación
-      requestAnimationFrame(animateWave)
+      animationFrame = requestAnimationFrame(animate)
     }
 
-    // Iniciar la animación
-    requestAnimationFrame(animateWave)
+    // Iniciar animación
+    animationFrame = requestAnimationFrame(animate)
+
+    // Limpiar al salir
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
+    }
   }
 
   // Iniciar animación del gráfico
-  initChartWaveAnimation()
+  initRobustChartAnimation()
+
+  // =====================================================
+  // DUPLICAR TARJETAS DEL CARRUSEL PARA LOOP INFINITO
+  // =====================================================
+  const carouselTrack = document.getElementById("carouselTrack")
+  if (carouselTrack) {
+    const cards = carouselTrack.innerHTML
+    carouselTrack.innerHTML = cards + cards // Duplicar para loop infinito
+  }
+
+  // =====================================================
+  // =====================================================
+
+  // Star rating functionality
+  const starRating = document.getElementById("starRating")
+  let selectedRating = 0
+
+  if (starRating) {
+    const stars = starRating.querySelectorAll(".star")
+
+    stars.forEach((star) => {
+      star.addEventListener("mouseenter", function () {
+        const value = Number.parseInt(this.getAttribute("data-value"))
+        highlightStars(value)
+      })
+
+      star.addEventListener("mouseleave", () => {
+        highlightStars(selectedRating)
+      })
+
+      star.addEventListener("click", function () {
+        selectedRating = Number.parseInt(this.getAttribute("data-value"))
+        highlightStars(selectedRating)
+      })
+    })
+
+    function highlightStars(count) {
+      stars.forEach((star, index) => {
+        if (index < count) {
+          star.classList.add("active")
+        } else {
+          star.classList.remove("active")
+        }
+      })
+    }
+  }
+
+  // Review form submission
+  const reviewForm = document.getElementById("reviewForm")
+  const reviewsGrid = document.querySelector(".reviews-grid")
+
+  if (reviewForm && reviewsGrid) {
+    reviewForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = document.getElementById("reviewName").value.trim()
+      const position = document.getElementById("reviewPosition").value.trim()
+      const text = document.getElementById("reviewText").value.trim()
+
+      if (!name || !text || selectedRating === 0) {
+        alert("Por favor completa todos los campos y selecciona una calificación")
+        return
+      }
+
+      // Generate initials
+      const initials = name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+
+      // Generate stars HTML
+      let starsHTML = ""
+      for (let i = 0; i < 5; i++) {
+        starsHTML += `<svg viewBox="0 0 24 24" fill="${i < selectedRating ? "currentColor" : "none"}" stroke="currentColor" stroke-width="${i < selectedRating ? "0" : "2"}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`
+      }
+
+      // Create new review card
+      const newReview = document.createElement("div")
+      newReview.className = "review-card new-review"
+      newReview.innerHTML = `
+        <div class="review-stars">
+          ${starsHTML}
+        </div>
+        <p class="review-text">"${text}"</p>
+        <div class="review-author">
+          <div class="author-avatar">
+            <span>${initials}</span>
+          </div>
+          <div class="author-info">
+            <h4>${name}</h4>
+            <p>${position || "Cliente"}</p>
+          </div>
+        </div>
+      `
+
+      // Add to grid at the beginning
+      reviewsGrid.insertBefore(newReview, reviewsGrid.firstChild)
+
+      // Reset form
+      reviewForm.reset()
+      selectedRating = 0
+      if (starRating) {
+        const stars = starRating.querySelectorAll(".star")
+        stars.forEach((star) => star.classList.remove("active"))
+      }
+
+      // Scroll to show new review
+      newReview.scrollIntoView({ behavior: "smooth", block: "center" })
+
+      // Show confirmation
+      setTimeout(() => {
+        alert("¡Gracias por tu reseña!")
+      }, 500)
+    })
+  }
 })

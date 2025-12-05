@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+    <!-- Fondo animado mejorado con más elementos y movimiento -->
+    <div class="animated-background">
+        <div class="bg-gradient"></div>
+        <div class="bg-particles">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+    </div>
+
     <!-- Gráficos flotantes de estadísticas en el fondo -->
     <div class="floating-charts">
         <svg class="floating-chart chart-1" viewBox="0 0 80 60">
@@ -77,7 +92,6 @@
     </header>
 
     <!-- Hero Section -->
-    <!-- Agregado id="inicio" para el scroll del botón de inicio -->
     <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="badge">
@@ -88,9 +102,9 @@
                 <span>+15 años de experiencia en el sector</span>
             </div>
 
-            <!-- Agregada clase para animación de entrada de "impulsa" -->
+            <!-- Palabra "impulsa" más llamativa con efectos destacados -->
             <h1 class="hero-title">
-                Asesoría que <span class="highlight impulsa-animate">impulsa</span> tu crecimiento
+                Asesoría que <span class="highlight-impulsa">impulsa</span> tu crecimiento
             </h1>
 
             <p class="hero-subtitle">
@@ -140,6 +154,126 @@
                 <circle cx="250" cy="100" r="8" fill="currentColor"/>
                 <circle cx="310" cy="60" r="8" fill="currentColor"/>
             </svg>
+        </div>
+    </section>
+
+    <!-- Nueva sección de Inducción sobre malas prácticas financieras -->
+    <section id="induccion" class="induction-section">
+        <div class="container">
+            <div class="induction-header">
+                <span class="induction-badge">Educación Financiera</span>
+                <h2 class="induction-title">Evita estas <span class="text-danger">malas prácticas</span> financieras</h2>
+                <p class="induction-subtitle">Conocer los errores comunes es el primer paso hacia una gestión financiera exitosa</p>
+            </div>
+
+            <div class="induction-carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Card 1 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </div>
+                        <h3>No tener presupuesto</h3>
+                        <p>Gastar sin planificar lleva al descontrol financiero y deudas innecesarias.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <circle cx="12" cy="16" r="1"/>
+                            </svg>
+                        </div>
+                        <h3>Ignorar el fondo de emergencia</h3>
+                        <p>Sin reservas, cualquier imprevisto se convierte en crisis financiera.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M7 15h0M2 10h20"/>
+                            </svg>
+                        </div>
+                        <h3>Uso excesivo de crédito</h3>
+                        <p>Depender de tarjetas de crédito genera intereses que erosionan tu patrimonio.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3>Posponer el ahorro</h3>
+                        <p>Esperar "el momento perfecto" para ahorrar significa perder años de crecimiento compuesto.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </div>
+                        <h3>No revisar estados de cuenta</h3>
+                        <p>Ignorar tus movimientos permite errores y fraudes que pasan desapercibidos.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="induction-card">
+                        <div class="card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <line x1="20" y1="8" x2="20" y2="14"/>
+                                <line x1="23" y1="11" x2="17" y2="11"/>
+                            </svg>
+                        </div>
+                        <h3>Mezclar finanzas personales</h3>
+                        <p>Combinar gastos personales y de negocio dificulta el control y la tributación.</p>
+                        <div class="card-indicator">
+                            <span class="indicator-bar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agregando botón para volver arriba -->
+            <div class="induction-action">
+                <a href="#inicio" class="btn-back-top">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
+                    </svg>
+                    Volver al inicio
+                </a>
+            </div>
         </div>
     </section>
 
@@ -326,15 +460,16 @@
                         <div class="chart-container">
                             <svg class="growth-chart" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet">
                                 <!-- Barras con clases para animación continua -->
-                                <rect class="chart-bar bar-gray bar-1" x="20" y="130" width="45" height="70" rx="4"/>
-                                <rect class="chart-bar bar-green bar-2" x="80" y="100" width="45" height="100" rx="4"/>
-                                <rect class="chart-bar bar-gray bar-3" x="140" y="70" width="45" height="130" rx="4"/>
-                                <rect class="chart-bar bar-green bar-4" x="200" y="45" width="45" height="155" rx="4"/>
-                                <rect class="chart-bar bar-gray bar-5" x="260" y="25" width="45" height="175" rx="4"/>
+                                <rect class="chart-bar bar-gray" id="bar1" x="20" y="130" width="45" height="70" rx="4"/>
+                                <rect class="chart-bar bar-green" id="bar2" x="80" y="100" width="45" height="100" rx="4"/>
+                                <rect class="chart-bar bar-gray" id="bar3" x="140" y="70" width="45" height="130" rx="4"/>
+                                <rect class="chart-bar bar-green" id="bar4" x="200" y="45" width="45" height="155" rx="4"/>
+                                <rect class="chart-bar bar-gray" id="bar5" x="260" y="25" width="45" height="175" rx="4"/>
                                 
                                 <!-- Línea de tendencia -->
                                 <polyline 
                                     class="trend-line" 
+                                    id="trendLine"
                                     points="42,120 102,90 162,60 222,35 282,15" 
                                     fill="none" 
                                     stroke="var(--color-primary)" 
@@ -343,11 +478,11 @@
                                     stroke-linejoin="round"
                                 />
                                 <!-- Puntos en la línea de tendencia -->
-                                <circle class="trend-dot" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
-                                <circle class="trend-dot" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
-                                <circle class="trend-dot" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
-                                <circle class="trend-dot" cx="222" cy="35" r="5" fill="var(--color-primary)"/>
-                                <circle class="trend-dot" cx="282" cy="15" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" id="dot4" cx="222" cy="35" r="5" fill="var(--color-primary)"/>
+                                <circle class="trend-dot" id="dot5" cx="282" cy="15" r="5" fill="var(--color-primary)"/>
                             </svg>
                         </div>
                     </div>
@@ -356,22 +491,178 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contacto" class="cta">
+    <!-- Reemplazando CTA con sección de Reseñas -->
+    <section id="contacto" class="reviews-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">¿Listo para transformar tu estrategia?</h2>
-                <p class="cta-text">
-                    Agenda una consulta sin compromiso y descubre cómo podemos optimizar tus decisiones financieras y jurídicas.
-                </p>
-                <div class="cta-buttons">
-                    <button class="btn-cta">
-                        Agendar Consulta Gratuita
-                        <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
+            <div class="reviews-header">
+                <span class="reviews-badge">Testimonios</span>
+                <h2 class="reviews-title">Lo que dicen nuestros <span class="text-primary">clientes</span></h2>
+                <p class="reviews-subtitle">Experiencias reales de empresas que han transformado su gestión financiera</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"LexFinance transformó completamente nuestra estrategia financiera. Redujimos costos en un 30% y ahora tenemos visibilidad total de nuestras operaciones."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>CM</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Martínez</h4>
+                            <p>CEO, TechStart México</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"El equipo de compliance nos ayudó a cumplir con todas las regulaciones sin afectar nuestras operaciones. Profesionales de primer nivel."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>AR</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Rodríguez</h4>
+                            <p>Directora Financiera, Grupo Industrial</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Las herramientas de simulación nos permitieron tomar decisiones de inversión informadas. Recuperamos la inversión en 6 meses."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>JL</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Jorge López</h4>
+                            <p>Fundador, Innovate Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Excelente asesoría jurídica en temas corporativos. Su conocimiento del mercado mexicano es invaluable para empresas extranjeras."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>MG</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Country Manager, Global Corp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"La calculadora de riesgo nos abrió los ojos sobre áreas de mejora que no habíamos considerado. Servicio personalizado y atento."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>RP</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Roberto Pérez</h4>
+                            <p>Director General, PyME Creativa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Gracias a su asesoría pudimos estructurar correctamente nuestra expansión. El ROI superó nuestras expectativas en el primer año."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <span>LS</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Laura Sánchez</h4>
+                            <p>COO, E-commerce Plus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario para agregar reseña -->
+            <div class="add-review-section">
+                <h3>Comparte tu experiencia</h3>
+                <form id="reviewForm" class="review-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reviewName">Nombre completo</label>
+                            <input type="text" id="reviewName" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewPosition">Cargo y empresa</label>
+                            <input type="text" id="reviewPosition" placeholder="CEO, Mi Empresa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewText">Tu experiencia</label>
+                        <textarea id="reviewText" rows="4" placeholder="Cuéntanos cómo LexFinance te ayudó..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Calificación</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-value="1">&#9733;</span>
+                            <span class="star" data-value="2">&#9733;</span>
+                            <span class="star" data-value="3">&#9733;</span>
+                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="star" data-value="5">&#9733;</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit-review">
+                        Enviar Reseña
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
                         </svg>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -391,9 +682,10 @@
                         <span class="logo-text">LexFinance</span>
                     </div>
                     <p class="footer-description">
-                        Excelencia en asesoría técnica financiera y jurídica desde 2008.
+                        Expertos en asesoría financiera y jurídica para empresas que buscan excelencia.
                     </p>
                 </div>
+
                 <div class="footer-links">
                     <h4>Servicios</h4>
                     <ul>
@@ -402,23 +694,26 @@
                         <li><a href="#">Compliance</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Herramientas</h4>
                     <ul>
                         <li><a href="calculadora-credito.html">Calculadora de Crédito</a></li>
                         <li><a href="calculadora-riesgo.html">Calculadora de Riesgo</a></li>
-                        <li><a href="simulador-credito.html">Simulador</a></li>
+                        <li><a href="simulador-credito.html">Simulador de Crédito</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Contacto</h4>
                     <ul>
                         <li><a href="#">contacto@lexfinance.com</a></li>
-                        <li><a href="#">+57 1 234 5678</a></li>
-                        <li><a href="#">Bogotá, Colombia</a></li>
+                        <li><a href="#">+1 (555) 123-4567</a></li>
+                        <li><a href="#">Ciudad de México</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>© 2025 LexFinance. Todos los derechos reservados.</p>
             </div>
