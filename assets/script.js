@@ -357,6 +357,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const reviewForm = document.getElementById("reviewForm")
   const reviewsGrid = document.querySelector(".reviews-grid")
 
+  function limitReviewsToThree() {
+    if (!reviewsGrid) return
+    const allReviews = reviewsGrid.querySelectorAll(".review-card")
+    allReviews.forEach((review, index) => {
+      if (index < 3) {
+        review.style.display = ""
+      } else {
+        review.style.display = "none"
+      }
+    })
+  }
+
+  // Aplicar límite al cargar
+  limitReviewsToThree()
+
   if (reviewForm && reviewsGrid) {
     reviewForm.addEventListener("submit", (e) => {
       e.preventDefault()
@@ -405,6 +420,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add to grid at the beginning
       reviewsGrid.insertBefore(newReview, reviewsGrid.firstChild)
+
+      limitReviewsToThree()
 
       // Reset form
       reviewForm.reset()

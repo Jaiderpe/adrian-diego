@@ -112,13 +112,15 @@
             </p>
 
             <div class="hero-buttons">
-                <button class="btn-secondary">
+                <!-- Añadida clase btn-move-left para animación hacia la izquierda -->
+                <button class="btn-secondary btn-move-left">
                     Comenzar Ahora
                     <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </button>
-                <button class="btn-outline">
+                <!-- Añadida clase btn-move-right para animación hacia la derecha -->
+                <button class="btn-outline btn-move-right">
                     Ver Casos de Éxito
                 </button>
             </div>
@@ -269,7 +271,7 @@
             <div class="induction-action">
                 <a href="#inicio" class="btn-back-top">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 19V5M5 12l7-7 7 7"/>
+                        <path d="M12 19V5M5 12l7-7 7 7 4-16"/>
                     </svg>
                     Volver al inicio
                 </a>
@@ -289,84 +291,19 @@
 
             <!-- Contenedor de Cards con efecto Stacking -->
             <div class="cards-stack-container" id="cardsStackContainer">
-                <div class="service-card" data-index="0">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3v18h18"/>
-                            <path d="M7 16l4-8 4 8 4-16"/>
-                        </svg>
-                    </div>
+                <div class="service-card service-card-image" data-index="0">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Asesoría Financiera" class="service-image">
                     <h3 class="service-title">Asesoría Financiera</h3>
-                    <p class="service-description">
-                        Estrategias de inversión, planificación fiscal y optimización de recursos para maximizar rentabilidad.
-                    </p>
                 </div>
 
-                <div class="service-card" data-index="1">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 3L2 8v13l10 5 10-5V8L12 3z"/>
-                            <path d="M12 22v-9"/>
-                        </svg>
-                    </div>
+                <div class="service-card service-card-image" data-index="1">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Derecho Corporativo" class="service-image">
                     <h3 class="service-title">Derecho Corporativo</h3>
-                    <p class="service-description">
-                        Estructuración legal, contratos comerciales y protección jurídica integral para tu empresa.
-                    </p>
                 </div>
 
-                <div class="service-card" data-index="2">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
+                <div class="service-card service-card-image" data-index="2">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Compliance" class="service-image">
                     <h3 class="service-title">Compliance</h3>
-                    <p class="service-description">
-                        Cumplimiento normativo, gestión de riesgos y auditorías para garantizar tu tranquilidad.
-                    </p>
-                </div>
-
-                <div class="service-card" data-index="3">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Due Diligence</h3>
-                    <p class="service-description">
-                        Análisis exhaustivo de operaciones, fusiones y adquisiciones con máximo detalle.
-                    </p>
-                </div>
-
-                <div class="service-card" data-index="4">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Consultoría Estratégica</h3>
-                    <p class="service-description">
-                        Planes de crecimiento, reestructuración y optimización de procesos empresariales.
-                    </p>
-                </div>
-
-                <div class="service-card" data-index="5">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M12 14l-4 4h8l-4-4z"/>
-                            <path d="M6 20h12"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Litigios Especializados</h3>
-                    <p class="service-description">
-                        Representación legal en disputas comerciales, financieras y corporativas complejas.
-                    </p>
                 </div>
             </div>
         </div>
@@ -384,8 +321,9 @@
                     </p>
 
                     <!-- Updated tool cards with better structure -->
+                    <!-- Añadida clase rotate-card para animación circular rotativa -->
                     <div class="tools-grid">
-                        <a href="calculadora-credito.html" class="tool-card">
+                        <a href="calculadora-credito.html" class="tool-card rotate-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -404,7 +342,7 @@
                             <span class="tool-arrow">→</span>
                         </a>
 
-                        <a href="calculadora-riesgo.html" class="tool-card">
+                        <a href="calculadora-riesgo.html" class="tool-card rotate-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -419,7 +357,7 @@
                             <span class="tool-arrow">→</span>
                         </a>
 
-                        <a href="simulador-credito.html" class="tool-card">
+                        <a href="simulador-credito.html" class="tool-card rotate-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M3 3v18h18"/>
@@ -500,8 +438,9 @@
                 <p class="reviews-subtitle">Experiencias reales de empresas que han transformado su gestión financiera</p>
             </div>
 
-            <div class="reviews-grid">
-                <!-- Review 1 -->
+            <!-- Cambiado a mostrar solo 3 reseñas más recientes -->
+            <div class="reviews-grid reviews-3-only">
+                <!-- Review 1 - Más reciente -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -510,82 +449,19 @@
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-                    <p class="review-text">"LexFinance transformó completamente nuestra estrategia financiera. Redujimos costos en un 30% y ahora tenemos visibilidad total de nuestras operaciones."</p>
+                    <p class="review-text">"Gracias a su asesoría pudimos estructurar correctamente nuestra expansión. El ROI superó nuestras expectativas en el primer año."</p>
                     <div class="review-author">
                         <div class="author-avatar">
-                            <span>CM</span>
+                            <span>LS</span>
                         </div>
                         <div class="author-info">
-                            <h4>Carlos Martínez</h4>
-                            <p>CEO, TechStart México</p>
+                            <h4>Laura Sánchez</h4>
+                            <p>COO, E-commerce Plus</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="review-card">
-                    <div class="review-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="review-text">"El equipo de compliance nos ayudó a cumplir con todas las regulaciones sin afectar nuestras operaciones. Profesionales de primer nivel."</p>
-                    <div class="review-author">
-                        <div class="author-avatar">
-                            <span>AR</span>
-                        </div>
-                        <div class="author-info">
-                            <h4>Ana Rodríguez</h4>
-                            <p>Directora Financiera, Grupo Industrial</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="review-card">
-                    <div class="review-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="review-text">"Las herramientas de simulación nos permitieron tomar decisiones de inversión informadas. Recuperamos la inversión en 6 meses."</p>
-                    <div class="review-author">
-                        <div class="author-avatar">
-                            <span>JL</span>
-                        </div>
-                        <div class="author-info">
-                            <h4>Jorge López</h4>
-                            <p>Fundador, Innovate Solutions</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 4 -->
-                <div class="review-card">
-                    <div class="review-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="review-text">"Excelente asesoría jurídica en temas corporativos. Su conocimiento del mercado mexicano es invaluable para empresas extranjeras."</p>
-                    <div class="review-author">
-                        <div class="author-avatar">
-                            <span>MG</span>
-                        </div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <p>Country Manager, Global Corp</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 5 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -606,7 +482,7 @@
                     </div>
                 </div>
 
-                <!-- Review 6 -->
+                <!-- Review 3 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -615,14 +491,14 @@
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-                    <p class="review-text">"Gracias a su asesoría pudimos estructurar correctamente nuestra expansión. El ROI superó nuestras expectativas en el primer año."</p>
+                    <p class="review-text">"Excelente asesoría jurídica en temas corporativos. Su conocimiento del mercado mexicano es invaluable para empresas extranjeras."</p>
                     <div class="review-author">
                         <div class="author-avatar">
-                            <span>LS</span>
+                            <span>MG</span>
                         </div>
                         <div class="author-info">
-                            <h4>Laura Sánchez</h4>
-                            <p>COO, E-commerce Plus</p>
+                            <h4>María González</h4>
+                            <p>Country Manager, Global Corp</p>
                         </div>
                     </div>
                 </div>

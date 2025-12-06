@@ -1256,6 +1256,47 @@ body {
   font-size: 15px;
 }
 
+/* Estilos para servicios con imágenes */
+.service-card-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.service-card-image .service-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.service-card-image .service-title {
+  padding: 20px;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-fg); /* Changed from var(--text-dark) to var(--color-fg) */
+}
+
+.service-card-image .service-icon,
+.service-card-image .service-description {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .service-card-image .service-image {
+    height: 200px;
+  }
+
+  .service-card-image .service-title {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 480px) {
   .cards-stack-container {
     padding-bottom: 70vh;
@@ -1735,4 +1776,48 @@ body {
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* =====================================================
+   ANIMACIÓN CIRCULAR ROTATIVA PARA TOOL-CARDS
+   ===================================================== */
+@keyframes circularRotate {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -8px);
+  }
+  50% {
+    transform: translate(0, -12px);
+  }
+  75% {
+    transform: translate(-8px, -8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Aplicar animación circular a las tarjetas de herramientas */
+.tool-card {
+  animation: circularRotate 4s ease-in-out infinite;
+}
+
+/* Delays diferentes para cada tarjeta - efecto de ola */
+.tool-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.tool-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.tool-card:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Pausar animación en hover para mejor UX */
+.tool-card:hover {
+  animation-play-state: paused;
 }
