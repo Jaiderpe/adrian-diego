@@ -112,15 +112,15 @@
             </p>
 
             <div class="hero-buttons">
-                <!-- Añadida clase btn-move-left para animación hacia la izquierda -->
-                <button class="btn-secondary btn-move-left">
+                <!-- Botón Comenzar Ahora ahora abre WhatsApp -->
+                <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary btn-move-left">
                     Comenzar Ahora
                     <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                </button>
-                <!-- Añadida clase btn-move-right para animación hacia la derecha -->
-                <button class="btn-outline btn-move-right">
+                </a>
+                <!-- Botón Ver Casos de Éxito ahora abre modal de video -->
+                <button class="btn-outline btn-move-right" onclick="openVideoModal()">
                     Ver Casos de Éxito
                 </button>
             </div>
@@ -149,12 +149,22 @@
                 <rect x="170" y="100" width="40" height="180" fill="currentColor" opacity="0.6"/>
                 <rect x="230" y="120" width="40" height="160" fill="currentColor" opacity="0.5"/>
                 <rect x="290" y="80" width="40" height="200" fill="currentColor" opacity="0.7"/>
-                <polyline points="70,160 130,120 190,80 250,100 310,60" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
-                <circle cx="70" cy="160" r="8" fill="currentColor"/>
-                <circle cx="130" cy="120" r="8" fill="currentColor"/>
-                <circle cx="190" cy="80" r="8" fill="currentColor"/>
-                <circle cx="250" cy="100" r="8" fill="currentColor"/>
-                <circle cx="310" cy="60" r="8" fill="currentColor"/>
+                <polyline 
+                    class="trend-line" 
+                    id="trendLine"
+                    points="42,120 102,90 162,60 222,35 282,15" 
+                    fill="none" 
+                    stroke="var(--color-primary)" 
+                    stroke-width="3" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"
+                />
+                <!-- Puntos en la línea de tendencia -->
+                <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
+                <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
+                <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
+                <circle class="trend-dot" id="dot4" cx="222" cy="35" r="5" fill="var(--color-primary)"/>
+                <circle class="trend-dot" id="dot5" cx="282" cy="15" r="5" fill="var(--color-primary)"/>
             </svg>
         </div>
     </section>
@@ -376,24 +386,7 @@
                 <!-- Tarjeta de estadísticas con clases para animación de barras -->
                 <div class="expertise-card">
                     <div class="live-stats-card">
-                        <div class="stats-list">
-                            <div class="stat-text-item">
-                                <span class="stat-label">Casos Ganados</span>
-                                <span class="stat-value" data-target="95">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Capital Protegido</span>
-                                <span class="stat-value" data-target="87">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Proyectos Activos</span>
-                                <span class="stat-value" data-target="72">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Tasa de Éxito</span>
-                                <span class="stat-value" data-target="94">0%</span>
-                            </div>
-                        </div>
+                        
                         
                         <div class="chart-container">
                             <svg class="growth-chart" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet">
@@ -596,6 +589,43 @@
         </div>
     </footer>
 
+    <!-- Modal para video de casos de éxito -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <video id="successVideo" controls>
+                <source src="public/images/Video de WhatsApp 2025-12-06 a las 01.10.41_21e02dbc.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
     <script src="assets/script.js"></script>
+    <script>
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('successVideo');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            video.play();
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('successVideo');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
 </body>
 </html>
