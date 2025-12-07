@@ -1078,7 +1078,7 @@ body {
 .services {
   position: relative;
   /* Reduced padding for less white space */
-  padding: 60px 0;
+  padding: 40px 0;
   background: rgba(231, 229, 228, 0.3);
   overflow: visible;
 }
@@ -1108,7 +1108,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-bottom: 60vh;
+  /* Reduced padding-bottom from 60vh to 30vh */
+  padding-bottom: 30vh;
 }
 
 .service-card {
@@ -1254,7 +1255,8 @@ body {
 
 @media (max-width: 480px) {
   .cards-stack-container {
-    padding-bottom: 70vh;
+    /* Reduced from 70vh to 40vh */
+    padding-bottom: 40vh;
   }
   .service-card {
     padding: 24px;
@@ -1287,7 +1289,8 @@ body {
     flex-direction: column;
     max-width: 700px;
     margin: 0 auto;
-    padding-bottom: 50vh;
+    /* Reduced from 50vh to 25vh */
+    padding-bottom: 25vh;
   }
   .service-card {
     position: sticky;
@@ -1333,7 +1336,7 @@ body {
    ===================================================== */
 .expertise {
   /* Reduced padding for less white space */
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 .expertise-grid {
