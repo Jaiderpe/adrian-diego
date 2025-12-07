@@ -7,13 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css">
-    <link rel="stylesheet" href="assets/tools.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/tools.css">
 </head>
 <body class="tool-page">
-    <!-- Header -->
     <header class="tool-header">
-        <!-- Botón volver ahora abre modal de confirmación -->
         <a href="javascript:void(0)" class="back-link" onclick="showConfirmModal()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -162,7 +160,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Gastos Mensuales (sin pagos de créditos)</label>
+                            <label class="form-label">Gastos Mensuales</label>
                             <input type="range" id="riesgoGastos" class="form-range" min="200000" max="15000000" step="100000" value="1500000">
                             <div class="range-value">Valor: <span id="gastosValue">$1.500.000</span></div>
                         </div>
@@ -182,9 +180,7 @@
                         
                         <div class="diagnosis-card">
                             <div class="diagnosis-label">Diagnóstico</div>
-                            <div class="diagnosis-badge" id="riskLevelBadge">
-                                Nivel de Riesgo
-                            </div>
+                            <div class="diagnosis-badge" id="riskLevelBadge">Nivel de Riesgo</div>
                         </div>
 
                         <div class="probability-card">
@@ -198,9 +194,6 @@
 
                     <div class="result-section">
                         <h3 class="result-section-title">Análisis Detallado</h3>
-                        <div class="analysis-chart">
-                            <canvas id="riskChart"></canvas>
-                        </div>
                         <div class="analysis-factors" id="analysisFactors">
                             <div class="factor-item">
                                 <span class="factor-name">Capacidad de Pago</span>
@@ -221,7 +214,7 @@
         </div>
     </main>
 
-    <!-- Modal de confirmación para salir -->
+    <!-- Modal de confirmación con botones estilizados -->
     <div id="confirmModal" class="confirm-modal">
         <div class="confirm-modal-overlay" onclick="hideConfirmModal()"></div>
         <div class="confirm-modal-content">
@@ -235,13 +228,26 @@
             <h3 class="confirm-modal-title">¿Quieres irte?</h3>
             <p class="confirm-modal-text">¿Quieres perder esta oportunidad de hacer tu operación en vivo?</p>
             <div class="confirm-modal-buttons">
-                <button class="btn-confirm-stay" onclick="hideConfirmModal()">Quedarme</button>
-                <button class="btn-confirm-leave" onclick="goBack()">Salir</button>
+                <button class="btn-confirm-stay" onclick="hideConfirmModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Quedarme
+                </button>
+                <button class="btn-confirm-leave" onclick="goBack()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    Salir
+                </button>
             </div>
         </div>
     </div>
 
-    <script src="assets/tools.js"></script>
+    <script src="/assets/tools.js"></script>
     <script>
         function showConfirmModal() {
             document.getElementById('confirmModal').classList.add('active');

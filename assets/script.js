@@ -318,6 +318,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // =====================================================
   // =====================================================
+  function initEducationRows() {
+    const rows = ["educationRow1", "educationRow2", "educationRow3"]
+
+    rows.forEach((rowId) => {
+      const track = document.getElementById(rowId)
+      if (track) {
+        // Duplicar el contenido para crear loop infinito
+        const content = track.innerHTML
+        track.innerHTML = content + content
+      }
+    })
+  }
+
+  initEducationRows()
+
+  // =====================================================
+  // =====================================================
 
   // Star rating functionality
   const starRating = document.getElementById("starRating")

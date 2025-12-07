@@ -73,12 +73,11 @@
                     <span class="logo-text">LexFinance</span>
                 </div>
 
-                <!-- Agregado enlace a Educación en el menú -->
                 <div class="nav-links">
                     <a href="#inicio">Inicio</a>
+                    <a href="#induccion">Educación</a>
                     <a href="#servicios">Servicios</a>
                     <a href="#herramientas">Herramientas</a>
-                    <a href="#induccion">Educación</a>
                     <a href="#contacto">Contacto</a>
                 </div>
 
@@ -104,7 +103,6 @@
                 <span>+15 años de experiencia en el sector</span>
             </div>
 
-            <!-- Palabra "impulsa" más llamativa con efectos destacados -->
             <h1 class="hero-title">
                 Asesoría que <span class="highlight-impulsa">impulsa</span> tu crecimiento
             </h1>
@@ -114,14 +112,12 @@
             </p>
 
             <div class="hero-buttons">
-                <!-- Botón Comenzar Ahora ahora abre WhatsApp -->
                 <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary btn-move-left">
                     Comenzar Ahora
                     <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <!-- Botón Ver Casos de Éxito ahora abre modal de video -->
                 <button class="btn-outline btn-move-right" onclick="openVideoModal()">
                     Ver Casos de Éxito
                 </button>
@@ -143,7 +139,6 @@
             </div>
         </div>
 
-        <!-- Gráfico combinado decorativo -->
         <div class="decorative-chart">
             <svg viewBox="0 0 400 300">
                 <rect x="50" y="180" width="40" height="100" fill="currentColor" opacity="0.4"/>
@@ -151,17 +146,7 @@
                 <rect x="170" y="100" width="40" height="180" fill="currentColor" opacity="0.6"/>
                 <rect x="230" y="120" width="40" height="160" fill="currentColor" opacity="0.5"/>
                 <rect x="290" y="80" width="40" height="200" fill="currentColor" opacity="0.7"/>
-                <polyline 
-                    class="trend-line" 
-                    id="trendLine"
-                    points="42,120 102,90 162,60 222,35 282,15" 
-                    fill="none" 
-                    stroke="var(--color-primary)" 
-                    stroke-width="3" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round"
-                />
-                <!-- Puntos en la línea de tendencia -->
+                <polyline class="trend-line" id="trendLine" points="42,120 102,90 162,60 222,35 282,15" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
                 <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
                 <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
@@ -171,10 +156,9 @@
         </div>
     </section>
 
-    <!-- Nueva sección de Inducción sobre malas prácticas financieras -->
+    <!-- Nueva sección de Educación con grid 3 filas x 5-6 columnas -->
     <section id="induccion" class="induction-section">
         <div class="container">
-            <!-- Nuevo header con logo y frase -->
             <div class="induction-header">
                 <div class="education-brand">
                     <div class="education-logo">
@@ -187,154 +171,145 @@
                 </div>
                 <span class="induction-badge">Educación Financiera</span>
                 <h2 class="induction-title">Evita estas <span class="text-danger">malas prácticas</span> financieras</h2>
-                <p class="induction-subtitle">Conocer los errores comunes es el primer paso hacia una gestión financiera exitosa</p>
             </div>
 
-            <div class="induction-columns">
-                <!-- Columna 1 - Se mueve a la derecha -->
-                <div class="induction-column move-right">
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-                            </svg>
-                        </div>
-                        <h3>No tener presupuesto</h3>
-                        <p>Gastar sin planificar lleva al descontrol.</p>
+            <!-- Fila 1 - Se mueve a la derecha -->
+            <div class="induction-row scroll-right">
+                <div class="induction-track">
+                    <div class="mini-card" style="background: #fef2f2;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                        <span>No tener presupuesto</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3>Sin fondo de emergencia</h3>
-                        <p>Cualquier imprevisto se vuelve crisis.</p>
+                    <div class="mini-card" style="background: #fef3c7;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <span>Sin fondo de emergencia</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                        </div>
-                        <h3>Gastar más de lo que ganas</h3>
-                        <p>El camino seguro hacia las deudas.</p>
+                    <div class="mini-card" style="background: #ecfdf5;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                        <span>Gastar más de lo que ganas</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
-                            </svg>
-                        </div>
-                        <h3>Compartir claves bancarias</h3>
-                        <p>Riesgo de fraude y robo de identidad.</p>
+                    <div class="mini-card" style="background: #eff6ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+                        <span>Compartir claves bancarias</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/>
-                            </svg>
-                        </div>
-                        <h3>No revisar extractos</h3>
-                        <p>Cobros indebidos pasan desapercibidos.</p>
+                    <div class="mini-card" style="background: #fdf4ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+                        <span>No revisar extractos</span>
+                    </div>
+                    <!-- Duplicados para loop infinito -->
+                    <div class="mini-card" style="background: #fef2f2;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                        <span>No tener presupuesto</span>
+                    </div>
+                    <div class="mini-card" style="background: #fef3c7;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <span>Sin fondo de emergencia</span>
+                    </div>
+                    <div class="mini-card" style="background: #ecfdf5;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                        <span>Gastar más de lo que ganas</span>
+                    </div>
+                    <div class="mini-card" style="background: #eff6ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+                        <span>Compartir claves bancarias</span>
+                    </div>
+                    <div class="mini-card" style="background: #fdf4ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+                        <span>No revisar extractos</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Columna 2 - Se mueve a la izquierda -->
-                <div class="induction-column move-left">
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 10h20"/>
-                            </svg>
-                        </div>
-                        <h3>Crédito para gastos diarios</h3>
-                        <p>Las tarjetas no son extensión del sueldo.</p>
+            <!-- Fila 2 - Se mueve a la izquierda -->
+            <div class="induction-row scroll-left">
+                <div class="induction-track">
+                    <div class="mini-card" style="background: #fff7ed;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 10h20"/></svg></div>
+                        <span>Crédito para gastos diarios</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-                            </svg>
-                        </div>
-                        <h3>Una sola fuente de ingresos</h3>
-                        <p>Depender de uno es muy riesgoso.</p>
+                    <div class="mini-card" style="background: #f0fdf4;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+                        <span>Una sola fuente de ingresos</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                            </svg>
-                        </div>
-                        <h3>Invertir sin conocimiento</h3>
-                        <p>Las inversiones a ciegas traen pérdidas.</p>
+                    <div class="mini-card" style="background: #faf5ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                        <span>Invertir sin conocimiento</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
-                            </svg>
-                        </div>
-                        <h3>Prestar sin garantías</h3>
-                        <p>Dinero prestado rara vez regresa.</p>
+                    <div class="mini-card" style="background: #f0f9ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                        <span>Prestar sin garantías</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                            </svg>
-                        </div>
-                        <h3>Compras impulsivas</h3>
-                        <p>Las ofertas vacían tu bolsillo.</p>
+                    <div class="mini-card" style="background: #fef2f2;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                        <span>Compras impulsivas</span>
+                    </div>
+                    <!-- Duplicados para loop infinito -->
+                    <div class="mini-card" style="background: #fff7ed;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 10h20"/></svg></div>
+                        <span>Crédito para gastos diarios</span>
+                    </div>
+                    <div class="mini-card" style="background: #f0fdf4;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+                        <span>Una sola fuente de ingresos</span>
+                    </div>
+                    <div class="mini-card" style="background: #faf5ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                        <span>Invertir sin conocimiento</span>
+                    </div>
+                    <div class="mini-card" style="background: #f0f9ff;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                        <span>Prestar sin garantías</span>
+                    </div>
+                    <div class="mini-card" style="background: #fef2f2;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                        <span>Compras impulsivas</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Columna 3 - Se mueve a la derecha -->
-                <div class="induction-column move-right">
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <h3>Postergar el ahorro</h3>
-                        <p>Esperar el momento perfecto no funciona.</p>
+            <!-- Fila 3 - Se mueve a la derecha -->
+            <div class="induction-row scroll-right">
+                <div class="induction-track">
+                    <div class="mini-card" style="background: #fefce8;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <span>Postergar el ahorro</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                            </svg>
-                        </div>
-                        <h3>Ignorar las finanzas</h3>
-                        <p>No revisar cuentas trae sorpresas.</p>
+                    <div class="mini-card" style="background: #f5f5f4;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                        <span>Ignorar las finanzas</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <h3>Ignorar correos del banco</h3>
-                        <p>Información importante se pierde.</p>
+                    <div class="mini-card" style="background: #ffe4e6;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <span>Ignorar correos del banco</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
-                            </svg>
-                        </div>
-                        <h3>Caer en estafas piramidales</h3>
-                        <p>Dinero fácil no existe.</p>
+                    <div class="mini-card" style="background: #dbeafe;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+                        <span>Caer en estafas piramidales</span>
                     </div>
-                    <div class="induction-card">
-                        <div class="card-icon danger">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
-                            </svg>
-                        </div>
-                        <h3>No tener metas financieras</h3>
-                        <p>Sin rumbo, el dinero se escapa.</p>
+                    <div class="mini-card" style="background: #ccfbf1;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+                        <span>No tener metas financieras</span>
+                    </div>
+                    <!-- Duplicados para loop infinito -->
+                    <div class="mini-card" style="background: #fefce8;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <span>Postergar el ahorro</span>
+                    </div>
+                    <div class="mini-card" style="background: #f5f5f4;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                        <span>Ignorar las finanzas</span>
+                    </div>
+                    <div class="mini-card" style="background: #ffe4e6;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <span>Ignorar correos del banco</span>
+                    </div>
+                    <div class="mini-card" style="background: #dbeafe;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+                        <span>Caer en estafas piramidales</span>
+                    </div>
+                    <div class="mini-card" style="background: #ccfbf1;">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+                        <span>No tener metas financieras</span>
                     </div>
                 </div>
             </div>
@@ -351,7 +326,6 @@
                 </p>
             </div>
 
-            <!-- Contenedor de Cards con efecto Stacking -->
             <div class="cards-stack-container" id="cardsStackContainer">
                 <div class="service-card service-card-image" data-index="0">
                     <img src="/placeholder.svg?height=300&width=400" alt="Asesoría Financiera" class="service-image">
@@ -382,8 +356,6 @@
                         soluciones que trascienden lo convencional.
                     </p>
 
-                    <!-- Updated tool cards with better structure -->
-                    <!-- Añadida clase rotate-card para animación circular rotativa -->
                     <div class="tools-grid">
                         <a href="calculadora-credito.html" class="tool-card rotate-card">
                             <div class="tool-icon">
@@ -435,7 +407,6 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta de estadísticas con clases para animación de barras -->
                 <div class="expertise-card">
                     <div class="live-stats-card">
                         <div class="stats-list">
@@ -459,25 +430,13 @@
                         
                         <div class="chart-container">
                             <svg class="growth-chart" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet">
-                                <!-- Barras con clases para animación continua -->
                                 <rect class="chart-bar bar-gray" id="bar1" x="20" y="130" width="45" height="70" rx="4"/>
                                 <rect class="chart-bar bar-green" id="bar2" x="80" y="100" width="45" height="100" rx="4"/>
                                 <rect class="chart-bar bar-gray" id="bar3" x="140" y="70" width="45" height="130" rx="4"/>
                                 <rect class="chart-bar bar-green" id="bar4" x="200" y="45" width="45" height="155" rx="4"/>
                                 <rect class="chart-bar bar-gray" id="bar5" x="260" y="25" width="45" height="175" rx="4"/>
                                 
-                                <!-- Línea de tendencia -->
-                                <polyline 
-                                    class="trend-line" 
-                                    id="trendLine"
-                                    points="42,120 102,90 162,60 222,35 282,15" 
-                                    fill="none" 
-                                    stroke="var(--color-primary)" 
-                                    stroke-width="3" 
-                                    stroke-linecap="round" 
-                                    stroke-linejoin="round"
-                                />
-                                <!-- Puntos en la línea de tendencia -->
+                                <polyline class="trend-line" id="trendLine" points="42,120 102,90 162,60 222,35 282,15" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
                                 <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
                                 <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
@@ -491,7 +450,7 @@
         </div>
     </section>
 
-    <!-- Reemplazando CTA con sección de Reseñas -->
+    <!-- Reseñas Section -->
     <section id="contacto" class="reviews-section">
         <div class="container">
             <div class="reviews-header">
@@ -500,9 +459,7 @@
                 <p class="reviews-subtitle">Experiencias reales de empresas que han transformado su gestión financiera</p>
             </div>
 
-            <!-- Cambiado a mostrar solo 3 reseñas más recientes -->
             <div class="reviews-grid reviews-3-only">
-                <!-- Review 1 - Más reciente -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -513,9 +470,7 @@
                     </div>
                     <p class="review-text">"Gracias a su asesoría pudimos estructurar correctamente nuestra expansión. El ROI superó nuestras expectativas en el primer año."</p>
                     <div class="review-author">
-                        <div class="author-avatar">
-                            <span>LS</span>
-                        </div>
+                        <div class="author-avatar"><span>LS</span></div>
                         <div class="author-info">
                             <h4>Laura Sánchez</h4>
                             <p>COO, E-commerce Plus</p>
@@ -523,7 +478,6 @@
                     </div>
                 </div>
 
-                <!-- Review 2 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -534,9 +488,7 @@
                     </div>
                     <p class="review-text">"La calculadora de riesgo nos abrió los ojos sobre áreas de mejora que no habíamos considerado. Servicio personalizado y atento."</p>
                     <div class="review-author">
-                        <div class="author-avatar">
-                            <span>RP</span>
-                        </div>
+                        <div class="author-avatar"><span>RP</span></div>
                         <div class="author-info">
                             <h4>Roberto Pérez</h4>
                             <p>Director General, PyME Creativa</p>
@@ -544,7 +496,6 @@
                     </div>
                 </div>
 
-                <!-- Review 3 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -555,9 +506,7 @@
                     </div>
                     <p class="review-text">"Excelente asesoría jurídica en temas corporativos. Su conocimiento del mercado mexicano es invaluable para empresas extranjeras."</p>
                     <div class="review-author">
-                        <div class="author-avatar">
-                            <span>MG</span>
-                        </div>
+                        <div class="author-avatar"><span>MG</span></div>
                         <div class="author-info">
                             <h4>María González</h4>
                             <p>Country Manager, Global Corp</p>
@@ -566,7 +515,6 @@
                 </div>
             </div>
 
-            <!-- Formulario para agregar reseña -->
             <div class="add-review-section">
                 <h3>Comparte tu experiencia</h3>
                 <form id="reviewForm" class="review-form">
@@ -664,7 +612,7 @@
         <div class="video-modal-content">
             <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
             <video id="successVideo" controls>
-                <source src="/images/video-20de-20whatsapp-202025-12-06-20a-20las-2001.mp4" type="video/mp4">
+                <source src="/assets/public/images/Video de WhatsApp 2025-12-06 a las 01.10.41_21e02dbc.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
         </div>
@@ -689,7 +637,6 @@
             video.currentTime = 0;
         }
 
-        // Cerrar modal con tecla Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeVideoModal();
