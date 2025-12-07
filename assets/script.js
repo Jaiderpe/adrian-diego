@@ -67,6 +67,36 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // =====================================================
+  // =====================================================
+  function initServiceVideos() {
+    const videoCards = document.querySelectorAll(".service-card-video")
+
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target.querySelector(".service-video")
+          if (video) {
+            if (entry.isIntersecting) {
+              video.play().catch((e) => console.log("Error playing video:", e))
+            } else {
+              video.pause()
+            }
+          }
+        })
+      },
+      {
+        threshold: 0.5, // El video debe estar 50% visible
+      },
+    )
+
+    videoCards.forEach((card) => {
+      videoObserver.observe(card)
+    })
+  }
+
+  initServiceVideos()
+
+  // =====================================================
   // INTERSECTION OBSERVER FOR ANIMATIONS
   // =====================================================
   const observerOptions = {

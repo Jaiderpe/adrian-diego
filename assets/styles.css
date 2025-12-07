@@ -700,7 +700,7 @@ body {
 }
 
 .text-danger {
- color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* Mini cards para educación */
@@ -1073,11 +1073,12 @@ body {
 }
 
 /* =====================================================
-   SERVICES SECTION - CARD STACKING
+   SERVICES SECTION - CARD STACKING + VIDEO STYLES
    ===================================================== */
 .services {
   position: relative;
-  padding: 80px 0;
+  /* Reduced padding for less white space */
+  padding: 60px 0;
   background: rgba(231, 229, 228, 0.3);
   overflow: visible;
 }
@@ -1185,41 +1186,68 @@ body {
   font-size: 15px;
 }
 
-.service-card-image {
+/* Video styles for service cards */
+.service-card-video {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 0;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card-image .service-image {
+.service-card-video:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-video-container {
+  position: relative;
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 280px;
+  overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
 
-.service-card-image .service-title {
-  padding: 20px;
-  margin: 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--color-fg);
+.service-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.service-card-image .service-icon,
-.service-card-image .service-description {
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  color: white;
+}
+
+.service-card-video .service-title {
+  color: white;
+  margin: 0;
+  font-size: 1.3rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.service-card-video .service-icon,
+.service-card-video .service-description {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .service-card-image .service-image {
-    height: 200px;
+  .service-video-container {
+    height: 220px;
   }
-  .service-card-image .service-title {
+  .video-overlay {
     padding: 15px;
+  }
+  .service-card-video .service-title {
     font-size: 1.1rem;
   }
 }
@@ -1301,10 +1329,11 @@ body {
 }
 
 /* =====================================================
-   EXPERTISE SECTION
+   EXPERTISE SECTION - HERRAMIENTAS
    ===================================================== */
 .expertise {
-  padding: 100px 0;
+  /* Reduced padding for less white space */
+  padding: 60px 0;
 }
 
 .expertise-grid {
@@ -1778,4 +1807,13 @@ body {
 
 .tool-card:hover {
   animation-play-state: paused;
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 40px 0;
+  }
+  .expertise {
+    padding: 40px 0;
+  }
 }

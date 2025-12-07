@@ -14,6 +14,80 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("btnSimular")) {
     initCreditSimulator()
   }
+
+  const btnSimular = document.getElementById("btnSimular")
+  if (btnSimular) {
+    btnSimular.addEventListener("click", calcularSimulacion)
+  }
+
+  function calcularSimulacion() {
+    const purpose = document.getElementById("simPurpose").value
+    const montoInput = document.getElementById("simMonto").value
+    const plazo = document.getElementById("simPlazo").value
+
+    if (!purpose || !montoInput || !plazo) {
+      alert("Por favor completa todos los campos")
+      return
+    }
+
+    // Convertir monto removiendo formato
+    const monto = Number.parseFloat(montoInput.replace(/[.,]/g, ""))
+
+    if (isNaN(monto) || monto <= 0) {
+      alert("Por favor ingresa un monto válido")
+      return
+    }
+
+    // Tasa de interés mensual (ejemplo: 0.9%)
+    const tasaMensual = 0.009
+
+    // Calcular cuota mensual usando fórmula de amortización
+    const cuotaMensual =
+      (monto * (tasaMensual * Math.pow(1 + tasaMensual, plazo))) / (Math.pow(1 + tasaMensual, plazo) - 1)
+    const totalPagar = cuotaMensual * plazo
+    const totalIntereses = totalPagar - monto
+
+    // Calcular porcentajes
+    const capitalPercent = ((monto / totalPagar) * 100).toFixed(1)
+    const interestPercent = ((totalIntereses / totalPagar) * 100).toFixed(1)
+
+    // Actualizar valores en la interfaz
+    document.getElementById("simCuotaMensual").textContent = formatCurrency(cuotaMensual)
+    document.getElementById("simTotalPagar").textContent = formatCurrency(totalPagar)
+    document.getElementById("simTotalIntereses").textContent = formatCurrency(totalIntereses)
+
+    document.getElementById("simCapitalPercent").textContent = capitalPercent + "%"
+    document.getElementById("simInterestPercent").textContent = interestPercent + "%"
+
+    // Actualizar barras de progreso si existen (nuevo diseño)
+    const capitalBar = document.getElementById("simCapitalBar")
+    const interestBar = document.getElementById("simInterestBar")
+
+    if (capitalBar && interestBar) {
+      setTimeout(() => {
+        capitalBar.style.width = capitalPercent + "%"
+        interestBar.style.width = interestPercent + "%"
+      }, 100)
+    }
+
+    // Animar el scroll hacia los resultados
+    const results = document.querySelector(".simulator-results-modern, .simulator-results")
+    if (results) {
+      results.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }
+  }
+
+  // Formatear input de monto con separadores de miles
+  const montoInput = document.getElementById("simMonto")
+  if (montoInput) {
+    montoInput.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\D/g, "")
+      if (value) {
+        value = Number.parseInt(value).toLocaleString("es-CO")
+      }
+      e.target.value = value
+    })
+  }
 })
 
 function initNumberFormatting() {
@@ -538,9 +612,12 @@ function simulateCredit() {
 
 // ========== UTILITY FUNCTIONS ==========
 function formatCurrency(value) {
-  const num = Number.parseFloat(value)
-  if (isNaN(num)) return "$0"
-  return "$" + Math.round(num).toLocaleString("es-CO")
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value)
 }
 
 function animateValue(element, start, end, duration, suffix = "", isCurrency = false) {
