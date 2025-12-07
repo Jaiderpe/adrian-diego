@@ -682,7 +682,7 @@ body {
 .induction-badge {
   display: inline-block;
   background: rgba(48, 213, 79, 0.1);
-  color: var(--color-danger);
+  color: #429862;
   padding: 8px 20px;
   border-radius: 50px;
   font-size: 14px;
