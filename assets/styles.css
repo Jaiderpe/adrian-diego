@@ -447,7 +447,6 @@ body {
   animation: scaleIn 1.2s ease-out;
 }
 
-/* Palabra "impulsa" más llamativa con efectos destacados */
 .highlight-impulsa {
   position: relative;
   display: inline-block;
@@ -541,7 +540,8 @@ body {
 
 .hero-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
   margin-bottom: 48px;
@@ -562,10 +562,13 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  text-decoration: none;
+  animation: btnMoveLeft 2s ease-in-out infinite;
 }
 
 .btn-secondary:hover {
   transform: scale(1.05);
+  animation-play-state: paused;
 }
 
 .btn-outline {
@@ -578,11 +581,33 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  animation: btnMoveRight 2s ease-in-out infinite;
 }
 
 .btn-outline:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  animation-play-state: paused;
+}
+
+@keyframes btnMoveLeft {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes btnMoveRight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
 }
 
 .stats-grid {
@@ -625,9 +650,6 @@ body {
 }
 
 @media (min-width: 640px) {
-  .hero-buttons {
-    flex-direction: row;
-  }
   .stats-grid {
     display: grid;
   }
@@ -892,7 +914,7 @@ body {
 }
 
 .reviews-title {
-  font-family: "Playfair Display", serif; /* Replaced var(--font-display) with actual font-family */
+  font-family: "Playfair Display", serif;
   font-size: clamp(2rem, 5vw, 3rem);
   color: var(--color-fg);
   margin-bottom: 1rem;
@@ -904,7 +926,7 @@ body {
 
 .reviews-subtitle {
   font-size: 1.1rem;
-  color: var(--color-muted-fg); /* Changed var(--color-muted) to var(--color-muted-fg) for consistency */
+  color: var(--color-muted-fg);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -1007,7 +1029,7 @@ body {
 
 .author-info p {
   font-size: 13px;
-  color: var(--color-muted-fg); /* Changed var(--color-muted) to var(--color-muted-fg) for consistency */
+  color: var(--color-muted-fg);
 }
 
 /* Formulario de reseña */
@@ -1022,7 +1044,7 @@ body {
 }
 
 .add-review-section h3 {
-  font-family: "Playfair Display", serif; /* Replaced var(--font-display) with actual font-family */
+  font-family: "Playfair Display", serif;
   font-size: 1.5rem;
   color: var(--color-fg);
   margin-bottom: 1.5rem;
@@ -1278,7 +1300,7 @@ body {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--color-fg); /* Changed from var(--text-dark) to var(--color-fg) */
+  color: var(--color-fg);
 }
 
 .service-card-image .service-icon,
@@ -1423,6 +1445,7 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  animation: circularRotate 4s ease-in-out infinite;
 }
 
 .tool-card::before {
@@ -1441,10 +1464,23 @@ body {
   transform: translateX(8px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-color: var(--color-primary);
+  animation-play-state: paused;
 }
 
 .tool-card:hover::before {
   transform: scaleY(1);
+}
+
+.tool-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.tool-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.tool-card:nth-child(3) {
+  animation-delay: 1s;
 }
 
 .tool-icon {
@@ -1498,6 +1534,24 @@ body {
 .tool-card:hover .tool-arrow {
   opacity: 1;
   transform: translateX(0);
+}
+
+@keyframes circularRotate {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -8px);
+  }
+  50% {
+    transform: translate(0, -12px);
+  }
+  75% {
+    transform: translate(-8px, -8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 @media (min-width: 640px) {
@@ -1726,7 +1780,6 @@ body {
 /* =====================================================
    VIDEO MODAL - CASOS DE ÉXITO
    ===================================================== */
-/* Agregados estilos completos para el modal de video */
 .video-modal {
   position: fixed;
   top: 0;
@@ -1874,45 +1927,255 @@ body {
 }
 
 /* =====================================================
-   ANIMACIÓN CIRCULAR ROTATIVA PARA TOOL-CARDS
+   EDUCATION SECTION - 3 COLUMNAS CON ANIMACIONES
    ===================================================== */
-@keyframes circularRotate {
-  0% {
-    transform: translate(0, 0);
+.education-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(231, 229, 228, 0.3) 100%);
+  overflow: hidden;
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.education-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.education-tagline {
+  font-family: "Playfair Display", serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.education-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .education-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
-  25% {
-    transform: translate(8px, -8px);
+}
+
+@media (max-width: 640px) {
+  .education-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.education-column.move-right {
+  animation: moveRight 3s ease-in-out infinite;
+}
+
+.education-column.move-left {
+  animation: moveLeft 3s ease-in-out infinite;
+}
+
+.education-column:hover {
+  animation-play-state: paused;
+}
+
+@keyframes moveRight {
+  0%,
+  100% {
+    transform: translateX(0);
   }
   50% {
-    transform: translate(0, -12px);
+    transform: translateX(12px);
   }
-  75% {
-    transform: translate(-8px, -8px);
-  }
+}
+
+@keyframes moveLeft {
+  0%,
   100% {
-    transform: translate(0, 0);
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-12px);
   }
 }
 
-/* Aplicar animación circular a las tarjetas de herramientas */
-.tool-card {
-  animation: circularRotate 4s ease-in-out infinite;
+.bad-practice-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
 
-/* Delays diferentes para cada tarjeta - efecto de ola */
-.tool-card:nth-child(1) {
-  animation-delay: 0s;
+.bad-practice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
 }
 
-.tool-card:nth-child(2) {
-  animation-delay: 0.5s;
+.bad-practice-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: rgba(220, 38, 38, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tool-card:nth-child(3) {
-  animation-delay: 1s;
+.bad-practice-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-danger);
 }
 
-/* Pausar animación en hover para mejor UX */
-.tool-card:hover {
-  animation-play-state: paused;
+.bad-practice-content h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-fg);
+  margin-bottom: 2px;
+}
+
+.bad-practice-content p {
+  font-size: 11px;
+  color: var(--color-muted-fg);
+  line-height: 1.4;
+}
+
+/* =====================================================
+   CONFIRM MODAL - HERRAMIENTAS
+   ===================================================== */
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.confirm-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.confirm-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.confirm-modal-content {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.confirm-modal.active .confirm-modal-content {
+  transform: scale(1);
+}
+
+.confirm-modal-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(220, 38, 38, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.confirm-modal-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-danger);
+}
+
+.confirm-modal h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-fg);
+  margin-bottom: 12px;
+}
+
+.confirm-modal p {
+  font-size: 14px;
+  color: var(--color-muted-fg);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.confirm-modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-stay {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-stay:hover {
+  background: #14532d;
+  transform: scale(1.05);
+}
+
+.btn-leave {
+  background: transparent;
+  color: var(--color-muted-fg);
+  border: 1px solid var(--color-border);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-leave:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
 }

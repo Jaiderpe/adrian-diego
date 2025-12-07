@@ -13,7 +13,8 @@
 <body class="tool-page">
     <!-- Header -->
     <header class="tool-header">
-        <a href="index.html" class="back-link">
+        <!-- Botón volver ahora abre modal de confirmación -->
+        <a href="javascript:void(0)" class="back-link" onclick="showConfirmModal()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
@@ -51,7 +52,6 @@
                         <label class="form-label">Monto del Crédito</label>
                         <div class="input-with-icon">
                             <span class="input-prefix">$</span>
-                            <!-- Agregado data-format="currency" para formateo con puntos -->
                             <input type="text" id="creditMonto" class="form-input format-number" placeholder="100.000" data-format="currency">
                         </div>
                     </div>
@@ -122,7 +122,47 @@
         </div>
     </main>
 
+    <!-- Modal de confirmación para salir -->
+    <div id="confirmModal" class="confirm-modal">
+        <div class="confirm-modal-overlay" onclick="hideConfirmModal()"></div>
+        <div class="confirm-modal-content">
+            <div class="confirm-modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+            </div>
+            <h3 class="confirm-modal-title">¿Quieres irte?</h3>
+            <p class="confirm-modal-text">¿Quieres perder esta oportunidad de hacer tu operación en vivo?</p>
+            <div class="confirm-modal-buttons">
+                <button class="btn-confirm-stay" onclick="hideConfirmModal()">Quedarme</button>
+                <button class="btn-confirm-leave" onclick="goBack()">Salir</button>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/tools.js"></script>
+    <script>
+        function showConfirmModal() {
+            document.getElementById('confirmModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideConfirmModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideConfirmModal();
+            }
+        });
+    </script>
 </body>
 </html>
-            
