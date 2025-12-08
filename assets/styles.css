@@ -1894,14 +1894,14 @@ body {
 
 /* Estilos para el carrusel de imágenes grandes animadas */
 .hero-images-carousel {
-  width: 100%;
-  max-width: 1200px;
-  margin: 32px auto 40px;
-  overflow: hidden;
-  position: relative;
-  height: 280px;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    width: 150%;
+    max-width: 1900px;
+    margin-left: -25%;
+    overflow: hidden;
+    position: relative;
+    height: 280px;
+    border-radius: 16px;
+    box-shadow: 0 40px 30px rgba(0, 0, 0, 0.15);
 }
 
 .hero-images-carousel::before,
