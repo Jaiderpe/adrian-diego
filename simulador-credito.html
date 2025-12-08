@@ -14,7 +14,7 @@
     <header class="tool-header">
         <a href="javascript:void(0)" class="back-link" onclick="showConfirmModal()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7 4-12"/>
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
             Volver
         </a>
@@ -31,7 +31,7 @@
 
     <main class="tool-main">
         <div class="tool-container animate-fade-in">
-            <!-- Mejorando el hero con diseño más moderno -->
+            <!-- Hero del simulador -->
             <div class="tool-hero simulator-hero">
                 <div class="tool-badge simulator">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -44,79 +44,55 @@
                 <p class="tool-page-subtitle">Calcula tu crédito ideal con nuestro simulador avanzado. Compara opciones y toma decisiones informadas.</p>
             </div>
 
-            <!-- Agregando tarjeta de bienvenida mejorada -->
-            <div class="simulator-welcome-modern animate-slide-up">
-                <div class="welcome-icon-modern">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                </div>
-                <div class="welcome-content-modern">
-                    <h2>¡Descubre tu Poder Financiero!</h2>
-                    <p>Simula diferentes escenarios de crédito y conoce exactamente cuánto pagarás. Nuestro simulador te ayuda a encontrar la mejor opción para tus necesidades.</p>
-                    <div class="welcome-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">0.9%</span>
-                            <span class="stat-label">Tasa mensual</span>
+            <!-- Grid corregido usando clases existentes del CSS -->
+            <div class="simulator-grid">
+                <!-- Formulario -->
+                <div class="simulator-form animate-slide-up">
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <line x1="2" y1="10" x2="22" y2="10"/>
+                            </svg>
+                            Configura tu Crédito
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">¿En qué vas a invertir tu crédito?</label>
+                            <select id="simPurpose" class="form-select large">
+                                <option value="">Selecciona una opción</option>
+                                <option value="vivienda">🏠 Vivienda</option>
+                                <option value="vehiculo">🚗 Vehículo</option>
+                                <option value="educacion">📚 Educación</option>
+                                <option value="negocio">💼 Negocio</option>
+                                <option value="personal">💰 Libre Inversión</option>
+                                <option value="consolidacion">📊 Consolidación de Deudas</option>
+                            </select>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">10 años</span>
-                            <span class="stat-label">Plazo máximo</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Rápido</span>
-                            <span class="stat-label">Aprobación</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Grid del simulador con diseño mejorado -->
-            <div class="simulator-grid-modern">
-                <div class="simulator-form-modern animate-slide-up" style="animation-delay: 0.1s;">
-                    <h3 class="form-section-title-modern">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <line x1="2" y1="10" x2="22" y2="10"/>
-                        </svg>
-                        Configura tu Crédito
-                    </h3>
-                    
-                    <div class="form-group">
-                        <label class="form-label">¿En qué vas a invertir tu crédito?</label>
-                        <select id="simPurpose" class="form-select large">
-                            <option value="">Selecciona una opción</option>
-                            <option value="vivienda">🏠 Vivienda</option>
-                            <option value="vehiculo">🚗 Vehículo</option>
-                            <option value="educacion">📚 Educación</option>
-                            <option value="negocio">💼 Negocio</option>
-                            <option value="personal">💰 Libre Inversión</option>
-                            <option value="consolidacion">📊 Consolidación de Deudas</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">¿Cuánto dinero necesitas?</label>
-                        <div class="input-with-icon">
-                            <span class="input-prefix">$</span>
-                            <input type="text" id="simMonto" class="form-input format-number" placeholder="1.000.000">
+                        <div class="form-group">
+                            <label class="form-label">¿Cuánto dinero necesitas?</label>
+                            <div class="input-with-icon">
+                                <span class="input-prefix">$</span>
+                                <input type="text" id="simMonto" class="form-input format-number" placeholder="1.000.000">
+                            </div>
+                            <div class="input-hint">Monto entre $500.000 y $500.000.000</div>
                         </div>
-                        <div class="input-hint">Monto entre $500.000 y $500.000.000</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">¿A qué plazo de pago?</label>
-                        <select id="simPlazo" class="form-select">
-                            <option value="">Selecciona una opción</option>
-                            <option value="12">12 meses (1 año)</option>
-                            <option value="24">24 meses (2 años)</option>
-                            <option value="36">36 meses (3 años)</option>
-                            <option value="48">48 meses (4 años)</option>
-                            <option value="60">60 meses (5 años)</option>
-                            <option value="72">72 meses (6 años)</option>
-                            <option value="84">84 meses (7 años)</option>
-                            <option value="120">120 meses (10 años)</option>
-                        </select>
+                        
+                        <div class="form-group">
+                            <label class="form-label">¿A qué plazo de pago?</label>
+                            <select id="simPlazo" class="form-select">
+                                <option value="">Selecciona una opción</option>
+                                <option value="12">12 meses (1 año)</option>
+                                <option value="24">24 meses (2 años)</option>
+                                <option value="36">36 meses (3 años)</option>
+                                <option value="48">48 meses (4 años)</option>
+                                <option value="60">60 meses (5 años)</option>
+                                <option value="72">72 meses (6 años)</option>
+                                <option value="84">84 meses (7 años)</option>
+                                <option value="120">120 meses (10 años)</option>
+                            </select>
+                        </div>
                     </div>
 
                     <button class="btn-calculate simulator" id="btnSimular">
@@ -128,98 +104,73 @@
                     </button>
                 </div>
 
-                <!-- Resultados con diseño más visual y moderno -->
-                <div class="simulator-results-modern animate-slide-up" style="animation-delay: 0.2s;">
-                    <h3 class="results-section-title-modern">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3v18h18"/>
-                            <path d="M7 16l4-8 4 8 4-12"/>
-                        </svg>
-                        Resumen de tu Crédito
-                    </h3>
+                <!-- Resultados -->
+                <div class="simulator-results animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="results-header">
+                        <h3>Resumen de tu Crédito</h3>
+                    </div>
                     
-                    <div class="sim-result-card-modern main">
-                        <div class="sim-result-icon-modern">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                <line x1="2" y1="10" x2="22" y2="10"/>
-                            </svg>
+                    <!-- Cuota mensual principal -->
+                    <div class="result-card">
+                        <div class="result-label">Cuota Mensual</div>
+                        <div class="result-value" id="simCuotaMensual">$0</div>
+                    </div>
+
+                    <!-- Grid de resultados secundarios -->
+                    <div class="form-row" style="margin-bottom: 1.5rem;">
+                        <div class="probability-card">
+                            <div class="probability-label">Total a Pagar</div>
+                            <div class="probability-value" id="simTotalPagar" style="font-size: 1.5rem;">$0</div>
                         </div>
-                        <div class="sim-result-content-modern">
-                            <div class="sim-result-label-modern">Cuota Mensual</div>
-                            <div class="sim-result-value-modern" id="simCuotaMensual">$0</div>
-                            <div class="sim-result-sublabel">Pago fijo mensual</div>
+                        <div class="probability-card">
+                            <div class="probability-label">Total Intereses</div>
+                            <div class="probability-value" id="simTotalIntereses" style="font-size: 1.5rem; color: #b45309;">$0</div>
                         </div>
                     </div>
 
-                    <div class="sim-results-grid-modern">
-                        <div class="sim-result-card-modern">
-                            <div class="sim-result-mini-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="12" y1="1" x2="12" y2="23"/>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                                </svg>
+                    <!-- Distribución del pago -->
+                    <div class="result-section">
+                        <div class="result-section-title">Distribución del Pago</div>
+                        <div class="analysis-factors">
+                            <div class="factor-item">
+                                <span class="factor-label">Capital</span>
+                                <div class="factor-bar">
+                                    <div class="factor-fill low" id="simCapitalBar" style="width: 0%"></div>
+                                </div>
+                                <span class="factor-value" id="simCapitalPercent">0%</span>
                             </div>
-                            <div class="sim-result-label-modern">Total a Pagar</div>
-                            <div class="sim-result-value-modern small" id="simTotalPagar">$0</div>
-                        </div>
-                        <div class="sim-result-card-modern">
-                            <div class="sim-result-mini-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 3v18h18"/>
-                                    <path d="M7 12l3 3 4-6 5 4"/>
-                                </svg>
-                            </div>
-                            <div class="sim-result-label-modern">Total Intereses</div>
-                            <div class="sim-result-value-modern small" id="simTotalIntereses">$0</div>
-                        </div>
-                    </div>
-
-                    <div class="sim-chart-container-modern">
-                        <h4>Distribución del Pago</h4>
-                        <div class="sim-progress-bars">
-                            <div class="progress-bar-item">
-                                <div class="progress-bar-header">
-                                    <span class="progress-label">Capital</span>
-                                    <span class="progress-value" id="simCapitalPercent">0%</span>
+                            <div class="factor-item">
+                                <span class="factor-label">Intereses</span>
+                                <div class="factor-bar">
+                                    <div class="factor-fill high" id="simInterestBar" style="width: 0%"></div>
                                 </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill capital" id="simCapitalBar" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-bar-item">
-                                <div class="progress-bar-header">
-                                    <span class="progress-label">Intereses</span>
-                                    <span class="progress-value" id="simInterestPercent">0%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill interest" id="simInterestBar" style="width: 0%"></div>
-                                </div>
+                                <span class="factor-value" id="simInterestPercent">0%</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="simulator-benefits">
-                        <div class="benefit-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- Beneficios -->
+                    <div class="recommendations-list" style="margin-top: 1rem;">
+                        <div class="recommendation-item">
+                            <svg class="recommendation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Sin comisiones ocultas</span>
+                            <span class="recommendation-text">Sin comisiones ocultas</span>
                         </div>
-                        <div class="benefit-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="recommendation-item">
+                            <svg class="recommendation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Aprobación rápida</span>
+                            <span class="recommendation-text">Aprobación rápida</span>
                         </div>
-                        <div class="benefit-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="recommendation-item">
+                            <svg class="recommendation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Tasas competitivas</span>
+                            <span class="recommendation-text">Tasas competitivas (0.9% mensual)</span>
                         </div>
                     </div>
                 </div>
@@ -238,7 +189,7 @@
         </div>
     </main>
 
-    <!-- Modal de confirmación con botones estilizados -->
+    <!-- Modal de confirmación -->
     <div id="confirmModal" class="confirm-modal">
         <div class="confirm-modal-overlay" onclick="hideConfirmModal()"></div>
         <div class="confirm-modal-content">

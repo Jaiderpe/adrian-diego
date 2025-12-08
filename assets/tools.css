@@ -474,6 +474,12 @@ body {
   padding-right: 2.5rem;
 }
 
+.input-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1310,10 +1316,10 @@ body {
   }
 }
 
-/* Simulator Grid */
+/* Simulator Grid - Corregido para responsivo */
 .simulator-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -1323,6 +1329,12 @@ body {
   .simulator-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulator-grid {
+    gap: 1rem;
   }
 }
 
@@ -1566,11 +1578,26 @@ body {
 
 /* Tool Info */
 .tool-info {
-  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
   margin-top: 2rem;
   padding: 1.5rem;
   background: var(--color-bg);
   border-radius: 12px;
+}
+
+.info-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.info-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1584,6 +1611,7 @@ body {
   color: var(--color-text-muted);
   font-size: 0.9rem;
   line-height: 1.6;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -1659,10 +1687,7 @@ body {
   }
 }
 
-/* Agregando estilos del modal de confirmación para salir */
-/* ================================
-   MODAL DE CONFIRMACIÓN
-================================ */
+/* Modal de confirmación */
 .confirm-modal {
   position: fixed;
   top: 0;
@@ -1760,7 +1785,6 @@ body {
   justify-content: center;
 }
 
-/* Botón Quedarme - Verde con gradiente */
 .btn-confirm-stay {
   display: flex;
   align-items: center;
@@ -1793,7 +1817,6 @@ body {
   height: 18px;
 }
 
-/* Botón Salir - Gris con borde */
 .btn-confirm-leave {
   display: flex;
   align-items: center;
@@ -1826,7 +1849,6 @@ body {
   height: 18px;
 }
 
-/* Responsive modal */
 @media (max-width: 480px) {
   .confirm-modal-content {
     padding: 2rem 1.5rem;
