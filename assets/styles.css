@@ -568,6 +568,69 @@ body {
   transform: scale(1.05);
 }
 
+/* Agregar animaciones de movimiento para los botones en móvil */
+@keyframes moveRight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+}
+
+@keyframes moveLeft {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
+
+/* Aplicar animaciones solo en móvil */
+@media (max-width: 639px) {
+  .btn-move-right {
+    animation: moveRight 2s ease-in-out infinite;
+  }
+
+  .btn-move-left {
+    animation: moveLeft 2s ease-in-out infinite;
+  }
+
+  .btn-move-right:hover,
+  .btn-move-left:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Estilos para el botón de WhatsApp en el header */
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp svg {
+  width: 26px;
+  height: 26px;
+}
+
 .btn-outline {
   background: transparent;
   color: var(--color-fg);
@@ -2068,4 +2131,3 @@ body {
     height: 16px;
   }
 }
-
