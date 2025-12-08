@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -76,7 +79,7 @@
                 <div class="nav-links">
                     <a href="#inicio">Inicio</a>
                     <a href="#induccion">Educación</a>
-                    <a href="#Asesorías">Asesorías</a>
+                    <a href="#Asesorías">Servicios</a>
                     <a href="#herramientas">Herramientas</a>
                     <a href="#contacto">Contacto</a>
                 </div>
@@ -103,23 +106,59 @@
                 <span>+15 años de experiencia en el sector</span>
             </div>
 
-            <h1 class="hero-title">
+            <h1 class="hero-title hero-title-new">
                 Asesoría que <span class="highlight-impulsa">impulsa</span> tu crecimiento
             </h1>
 
-            <p class="hero-subtitle">
-                Soluciones estratégicas en finanzas y derecho para empresas que buscan excelencia y seguridad en cada decisión.
-            </p>
+           <div class="hero-images-carousel">
+                <div class="hero-images-track">
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 19.27.59_6d8b7869.jpg" alt="Consultoría Financiera">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.56.39_a307ffae.jpg" alt="Asesoría Jurídica">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.49.53_ea19e2d5.jpg" alt="Crecimiento Empresarial">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.36.19_eafaf391.jpg" alt="Estrategia Empresarial">
+                    </div>
+                    <!-- Duplicar para loop infinito -->
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 19.27.59_6d8b7869.jpg" alt="Consultoría Financiera">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.56.39_a307ffae.jpg" alt="Asesoría Jurídica">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.49.53_ea19e2d5.jpg" alt="Crecimiento Empresarial">
+                    </div>
+                    <div class="hero-image-item">
+                        <img src="/assets/public/images/Imagen de WhatsApp 2025-12-07 a las 13.36.19_eafaf391.jpg" alt="Estrategia Empresarial">
+                    </div>
+                </div>
+            </div>
 
-            <div class="hero-buttons">
+
+             <div class="hero-buttons">
                 <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary btn-move-left">
                     Comenzar Ahora
                     <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <button class="btn-outline btn-move-right" onclick="openVideoModal()">
-                    Ver Casos de Éxito
+                <!-- Botón con icono de reproducción animado y profesional -->
+                <button class="btn-outline btn-play-animated" onclick="openVideoModal()">
+                    <span class="play-icon-container">
+                        <span class="play-pulse"></span>
+                        <span class="play-pulse play-pulse-2"></span>
+                        <span class="play-pulse play-pulse-3"></span>
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </span>
+                    <span class="play-text">Ver Casos de Éxito</span>
                 </button>
             </div>
 
@@ -316,11 +355,11 @@
         </div>
     </section>
 
-    <!-- Asesorías Section con Card Stacking -->
-    <section id="Asesorías" class="Asesorías">
+    <!-- Servicios Section con Card Stacking -->
+    <section id="servicios" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Asesorías Especializados</h2>
+                <h2 class="section-title">Servicios Especializados</h2>
                 <p class="section-subtitle">
                     Soluciones integrales diseñadas para proteger y hacer crecer tu patrimonio empresarial.
                 </p>
@@ -351,7 +390,7 @@
                         src="/assets/public/images/Video de WhatsApp 2025-12-07 a las 12.54.20_0f4ae541.mp4"
                     ></video>
                     <div class="service-video-overlay">
-                        <h3 class="service-title">Derecho procesal</h3>
+                        <h3 class="service-title">Derecho Corporativo</h3>
                     </div>
                 </div>
 
@@ -365,7 +404,7 @@
                         src="/assets/public/images/Video de WhatsApp 2025-12-07 a las 12.54.38_37da6c8e.mp4"
                     ></video>
                     <div class="service-video-overlay">
-                        <h3 class="service-title">Gerencia comercial</h3>
+                        <h3 class="service-title">Compliance</h3>
                     </div>
                 </div>
             </div>
@@ -376,7 +415,11 @@
     <section id="herramientas" class="expertise">
         <div class="container">
             <div class="expertise-grid tools-section">
+                
+                
+                
                 <div class="expertise-content">
+                    <h2 class="reviews-title">Herramientas sin  <span class="text-primary">costo</span></h2>
                     <div class="stats-list">
                             <div class="stat-text-item">
                                 <span class="stat-label">Casos Ganados</span>
@@ -599,8 +642,8 @@
                     <h4>Asesorías</h4>
                     <ul>
                         <li><a href="#">Asesoría Financiera</a></li>
-                        <li><a href="#">Derecho procesal</a></li>
-                        <li><a href="#">Gerencia comercial</a></li>
+                        <li><a href="#">Derecho Corporativo</a></li>
+                        <li><a href="#">Compliance</a></li>
                     </ul>
                 </div>
 

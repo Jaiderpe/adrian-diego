@@ -1820,3 +1820,252 @@ body {
     padding: 40px 0;
   }
 }
+/* Nuevo estilo para título más pequeño con Montserrat */
+.hero-title-new {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: clamp(2rem, 5vw, 4rem) !important; /* Más pequeño que el original */
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Estilos para el carrusel de imágenes grandes animadas */
+.hero-images-carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto 40px;
+  overflow: hidden;
+  position: relative;
+  height: 280px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.hero-images-carousel::before,
+.hero-images-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-images-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.hero-images-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.hero-images-track {
+  display: flex;
+  gap: 24px;
+  animation: scrollImagesRight 40s linear infinite;
+  will-change: transform;
+}
+
+.hero-image-item {
+  flex-shrink: 0;
+  width: 500px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero-image-item:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.hero-image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes scrollImagesRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-500px * 4 - 24px * 4));
+  }
+}
+
+/* Estilos para el botón de play animado y profesional */
+.btn-play-animated {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  overflow: visible;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(22, 101, 52, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-play-animated:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(22, 101, 52, 0.3);
+}
+
+.play-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.play-icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.btn-play-animated:hover .play-icon {
+  transform: scale(1.2);
+  animation: playBounce 0.6s ease-in-out infinite;
+}
+
+.play-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0;
+  animation: pulsate 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.play-pulse-2 {
+  animation-delay: 0.8s;
+}
+
+.play-pulse-3 {
+  animation-delay: 1.6s;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes playBounce {
+  0%,
+  100% {
+    transform: scale(1.2) translateX(0);
+  }
+  50% {
+    transform: scale(1.2) translateX(3px);
+  }
+}
+
+.play-text {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.btn-play-animated:hover .play-text {
+  animation: textShake 0.5s ease;
+}
+
+@keyframes textShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+/* Responsivo para imágenes */
+@media (max-width: 768px) {
+  .hero-images-carousel {
+    height: 200px;
+  }
+
+  .hero-image-item {
+    width: 350px;
+    height: 200px;
+  }
+
+  @keyframes scrollImagesRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-350px * 4 - 24px * 4));
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-images-carousel {
+    height: 160px;
+    margin: 24px auto 32px;
+  }
+
+  .hero-image-item {
+    width: 280px;
+    height: 160px;
+  }
+
+  @keyframes scrollImagesRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-280px * 4 - 24px * 4));
+    }
+  }
+
+  .btn-play-animated {
+    padding: 12px 24px;
+    gap: 8px;
+  }
+
+  .play-icon-container {
+    width: 24px;
+    height: 24px;
+  }
+
+  .play-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+

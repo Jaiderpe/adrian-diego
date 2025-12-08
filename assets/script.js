@@ -488,3 +488,76 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+document.addEventListener("DOMContentLoaded", () => {
+  // Scroll al inicio
+  window.scrollTo(0, 0)
+
+  // =====================================================
+  // CARD STACKING - Funciona en todas las pantallas
+  // =====================================================
+  function initCardStacking() {
+    const container = document.getElementById("cardsStackContainer")
+    if (!container) return
+
+    const cards = container.querySelectorAll(".service-card")
+
+    let topValues
+    if (window.innerWidth < 480) {
+      topValues = [70, 85, 100, 115, 130, 145]
+    } else if (window.innerWidth < 768) {
+      topValues = [80, 100, 120, 140, 160, 180]
+    } else {
+      topValues = [90, 115, 140, 165, 190, 215]
+    }
+
+    cards.forEach((card, index) => {
+      card.style.position = "sticky"
+      card.style.top = topValues[index] + "px"
+      card.style.zIndex = (100 + index).toString()
+    })
+
+    function handleScroll() {
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect()
+
+        if (index < cards.length - 1) {
+          const nextCard = cards[index + 1]
+          const nextRect = nextCard.getBoundingClientRect()
+
+          if (nextRect.top <= rect.top + 50) {
+            card.classList.add("is-stacked")
+          } else {
+            card.classList.remove("is-stacked")
+          }
+        }
+      })
+    }
+
+    let ticking = false
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    handleScroll()
+  }
+
+  initCardStacking()
+
+  let resizeTimeout
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(initCardStacking, 150)
+  })
+})
+
+function openVideoModal() {
+  alert("Aquí se abrirá el modal con los casos de éxito")
+  // Implementar modal de video aquí
+}
