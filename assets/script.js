@@ -67,6 +67,57 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // =====================================================
+  // STICKY BUTTON - Immediate trigger with top positioning
+  // =====================================================
+  const stickyButton = document.querySelector("[data-sticky-button]")
+  const heroSection = document.getElementById("inicio")
+
+  if (stickyButton && heroSection) {
+    function handleStickyButton() {
+      const heroRect = heroSection.getBoundingClientRect()
+      const heroBottom = heroRect.bottom
+
+      // Trigger immediately when hero top goes above header
+      const isSticky = heroBottom <= 80
+
+      if (isSticky) {
+        if (!stickyButton.classList.contains("sticky-active")) {
+          stickyButton.classList.add("sticky-active")
+          console.log("[v0] Sticky button activated")
+        }
+      } else {
+        if (stickyButton.classList.contains("sticky-active")) {
+          stickyButton.classList.remove("sticky-active")
+          console.log("[v0] Sticky button deactivated")
+        }
+      }
+    }
+
+    // Scroll event with requestAnimationFrame optimization
+    let scrollTicking = false
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!scrollTicking) {
+          requestAnimationFrame(() => {
+            handleStickyButton()
+            scrollTicking = false
+          })
+          scrollTicking = true
+        }
+      },
+      { passive: true },
+    )
+
+    // Handle window resize
+    window.addEventListener("resize", handleStickyButton)
+
+    // Initial check
+    handleStickyButton()
+  }
+
+  // =====================================================
+  // SERVICE VIDEOS - Funciona en todas las pantallas
   // =====================================================
   function initServiceVideos() {
     const videoCards = document.querySelectorAll(".service-card-video")
@@ -347,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =====================================================
+  // DUPLICAR FILAS DE EDUCACIÓN PARA LOOP INFINITO
   // =====================================================
   function initEducationRows() {
     const rows = ["educationRow1", "educationRow2", "educationRow3"]
@@ -364,6 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEducationRows()
 
   // =====================================================
+  // FUNCIÓN DE CALIFICACIÓN DE ESTRELLAS
   // =====================================================
 
   // Star rating functionality
@@ -400,7 +453,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Review form submission
+  // =====================================================
+  // FORMULARIO DE RESEÑAS - Envío y limitación de reseñas
+  // =====================================================
   const reviewForm = document.getElementById("reviewForm")
   const reviewsGrid = document.querySelector(".reviews-grid")
 
@@ -488,76 +543,3 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
-document.addEventListener("DOMContentLoaded", () => {
-  // Scroll al inicio
-  window.scrollTo(0, 0)
-
-  // =====================================================
-  // CARD STACKING - Funciona en todas las pantallas
-  // =====================================================
-  function initCardStacking() {
-    const container = document.getElementById("cardsStackContainer")
-    if (!container) return
-
-    const cards = container.querySelectorAll(".service-card")
-
-    let topValues
-    if (window.innerWidth < 480) {
-      topValues = [70, 85, 100, 115, 130, 145]
-    } else if (window.innerWidth < 768) {
-      topValues = [80, 100, 120, 140, 160, 180]
-    } else {
-      topValues = [90, 115, 140, 165, 190, 215]
-    }
-
-    cards.forEach((card, index) => {
-      card.style.position = "sticky"
-      card.style.top = topValues[index] + "px"
-      card.style.zIndex = (100 + index).toString()
-    })
-
-    function handleScroll() {
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect()
-
-        if (index < cards.length - 1) {
-          const nextCard = cards[index + 1]
-          const nextRect = nextCard.getBoundingClientRect()
-
-          if (nextRect.top <= rect.top + 50) {
-            card.classList.add("is-stacked")
-          } else {
-            card.classList.remove("is-stacked")
-          }
-        }
-      })
-    }
-
-    let ticking = false
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll()
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true })
-    handleScroll()
-  }
-
-  initCardStacking()
-
-  let resizeTimeout
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout)
-    resizeTimeout = setTimeout(initCardStacking, 150)
-  })
-})
-
-function openVideoModal() {
-  alert("Aquí se abrirá el modal con los casos de éxito")
-  // Implementar modal de video aquí
-}

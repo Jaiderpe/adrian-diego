@@ -136,17 +136,17 @@
                 </div>
             </div>
 
-
-             <div class="hero-buttons">
-                <!-- Añadir clase para animación de movimiento a la derecha -->
-                <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary btn-move-right">
-                    Comenzar Ahora
+            <div class="hero-buttons">
+                <!-- Invertido: Ahora "Comenzar Ahora" está primero (izquierda en PC) -->
+                <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary" data-sticky-button>
+                    <span class="btn-text">Comenzar Ahora</span>
+                    <span class="btn-icon">▶</span>
                     <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <!-- Cambiar clase de btn-move-left a btn-move-left para movimiento a la izquierda -->
-                <button class="btn-outline btn-play-animated btn-move-left" onclick="openVideoModal()">
+                <!-- "Ver Casos de Éxito" ahora está segundo (derecha en PC) -->
+                <button class="btn-outline btn-play-animated" onclick="openVideoModal()">
                     <span class="play-text">Ver Casos de Éxito</span>
                     <span class="play-icon-container">
                         <span class="play-pulse"></span>
@@ -156,7 +156,6 @@
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </span>
-                    
                 </button>
             </div>
 
