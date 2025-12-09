@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   --color-bg: #fafaf9;
   --color-fg: #0a0908;
@@ -163,6 +169,7 @@ body {
   pointer-events: none;
   z-index: -1;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 .bg-gradient {
@@ -278,6 +285,7 @@ body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 .floating-chart {
@@ -475,6 +483,61 @@ body {
   color: var(--color-fg);
 }
 
+/* Estilos para el botón de WhatsApp con número de teléfono */
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #128c7e;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.whatsapp-number {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* En móvil, ocultar el número y mostrar solo el ícono */
+@media (max-width: 640px) {
+  .btn-whatsapp {
+    padding: 10px;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    justify-content: center;
+  }
+
+  .whatsapp-number {
+    display: none;
+  }
+
+  .btn-whatsapp svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
 .btn-primary {
   display: flex;
   align-items: center;
@@ -667,6 +730,7 @@ body {
   border-radius: 16px;
   margin-top: 32px;
   margin-bottom: 32px;
+  box-shadow: 0 40px 30px rgba(0, 0, 0, 0.15);
 }
 
 .hero-images-carousel::before,
@@ -1050,12 +1114,14 @@ body {
     font-size: 11px;
   }
 
+  /* Corregir el carrusel para que no cause overflow */
   .hero-images-carousel {
     height: 160px;
-    width: 110%;
-    margin-left: -5%;
+    width: 100%;
+    margin-left: 0;
     margin-top: 24px;
     margin-bottom: 24px;
+    overflow: hidden;
   }
 
   .hero-image-item {
@@ -1109,6 +1175,7 @@ body {
   padding: 80px 0;
   background: linear-gradient(180deg, rgba(231, 229, 228, 0.5) 0%, rgba(250, 250, 249, 1) 100%);
   overflow: hidden;
+  max-width: 100vw;
 }
 
 .induction-header {
@@ -1178,6 +1245,7 @@ body {
   overflow: hidden;
   padding: 12px 0;
   margin-bottom: 16px;
+  max-width: 100vw;
 }
 
 .induction-track {
@@ -1849,6 +1917,7 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  animation: circularRotate 4s ease-in-out infinite;
 }
 
 .tool-card::before {
@@ -1867,6 +1936,7 @@ body {
   transform: translateX(8px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-color: var(--color-primary);
+  animation-play-state: paused;
 }
 
 .tool-card:hover::before {
@@ -2263,10 +2333,6 @@ body {
   }
 }
 
-.tool-card {
-  animation: circularRotate 4s ease-in-out infinite;
-}
-
 .tool-card:nth-child(1) {
   animation-delay: 0s;
 }
@@ -2275,10 +2341,6 @@ body {
 }
 .tool-card:nth-child(3) {
   animation-delay: 1s;
-}
-
-.tool-card:hover {
-  animation-play-state: paused;
 }
 
 @media (max-width: 480px) {
