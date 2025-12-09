@@ -67,53 +67,53 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // =====================================================
-  // STICKY BUTTON - Immediate trigger with top positioning
+  // STICKY BUTTON - Improved for mobile with smoother tracking
   // =====================================================
   const stickyButton = document.querySelector("[data-sticky-button]")
   const heroSection = document.getElementById("inicio")
 
   if (stickyButton && heroSection) {
-    function handleStickyButton() {
+    let isSticky = false
+    let rafId = null
+
+    function updateStickyButton() {
       const heroRect = heroSection.getBoundingClientRect()
       const heroBottom = heroRect.bottom
+      const scrollY = window.scrollY || window.pageYOffset
 
-      // Trigger immediately when hero top goes above header
-      const isSticky = heroBottom <= 80
+      const isMobile = window.innerWidth < 768
+      const threshold = isMobile ? 150 : 300
+      const shouldBeSticky = heroBottom <= 50 || scrollY > threshold
 
-      if (isSticky) {
-        if (!stickyButton.classList.contains("sticky-active")) {
+      if (shouldBeSticky !== isSticky) {
+        isSticky = shouldBeSticky
+        if (isSticky) {
           stickyButton.classList.add("sticky-active")
-          console.log("[v0] Sticky button activated")
-        }
-      } else {
-        if (stickyButton.classList.contains("sticky-active")) {
+        } else {
           stickyButton.classList.remove("sticky-active")
-          console.log("[v0] Sticky button deactivated")
         }
       }
     }
 
-    // Scroll event with requestAnimationFrame optimization
-    let scrollTicking = false
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!scrollTicking) {
-          requestAnimationFrame(() => {
-            handleStickyButton()
-            scrollTicking = false
-          })
-          scrollTicking = true
-        }
-      },
-      { passive: true },
-    )
+    function onScroll() {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        updateStickyButton()
+        rafId = null
+      })
+    }
 
-    // Handle window resize
-    window.addEventListener("resize", handleStickyButton)
+    // Listen to multiple scroll events for better mobile support
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("touchmove", onScroll, { passive: true })
+    window.addEventListener("resize", updateStickyButton, { passive: true })
 
     // Initial check
-    handleStickyButton()
+    updateStickyButton()
+
+    // Delayed check for mobile browsers
+    setTimeout(updateStickyButton, 50)
+    setTimeout(updateStickyButton, 200)
   }
 
   // =====================================================
@@ -326,6 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const progress = (elapsed % cycleDuration) / cycleDuration
 
       // Usar función seno para movimiento suave
+      // Va de 0 (completamente abajo) a 1 (completamente arriba)
       const basePhase = progress * Math.PI * 2
 
       const newPoints = []
