@@ -1533,135 +1533,97 @@ body {
    ===================================================== */
 .services {
   position: relative;
-  /* Reducido el padding inferior para menos espacio con herramientas */
-  padding: 40px 0 20px 0;
-  background: rgba(231, 229, 228, 0.3);
+  /* Mayor padding para mejor espaciado */
+  padding: 80px 0 60px 0;
+  background: linear-gradient(180deg, rgba(231, 229, 228, 0.2) 0%, rgba(231, 229, 228, 0.4) 100%);
   overflow: visible;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 }
 
 .section-title {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--color-fg);
+  /* Agregado efecto de texto más profesional */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
   color: var(--color-muted-fg);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 /* =====================================================
-   STACKED CARDS ANIMATION - UNIFIED & PROFESSIONAL
+   STACKED CARDS ANIMATION - SUPER ROBUST & DRAMATIC
    ===================================================== */
 
 .cards-stack-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20vh;
+  /* Mayor espacio para mejor efecto de apilamiento */
+  padding-bottom: 30vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* Consolidated service-card styles to prevent CSS conflicts */
+/* Estilos mejorados para tarjetas más profesionales con transiciones dramáticas */
 .service-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: 24px;
+  padding: 0;
   position: sticky;
-  box-shadow: 0 -8px 30px var(--color-shadow), 0 4px 20px rgba(0, 0, 0, 0.08);
-  min-height: 200px;
-  margin-bottom: 30px;
-  will-change: transform, opacity;
-  /* Primary transition for stacked animation - removed conflicting scroll reveal transitions */
-  transition:
-    transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1),
-    opacity 0.4s ease-out,
-    box-shadow 0.4s ease-out,
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-/* Default state before animation */
-.service-card {
-  transform: scale(1);
+  box-shadow: 0 10px 40px var(--color-shadow), 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  min-height: 400px;
+  margin-bottom: 40px;
+  will-change: transform, opacity, filter;
+  overflow: hidden;
+  /* Transiciones suaves y largas para efecto dramático */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s
+    cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Estado inicial visible */
+  transform: translateY(0) scale(1);
   opacity: 1;
+  filter: blur(0px);
 }
 
-/* Stacked state - applies when cards are stacking on scroll */
+/* Estado cuando las tarjetas están apiladas - EFECTO DRAMÁTICO */
 .service-card.is-stacked {
-  box-shadow: 0 2px 12px var(--color-shadow), 0 1px 4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-10px) scale(0.92) !important;
+  opacity: 0.55 !important;
+  filter: blur(3px) !important;
+  box-shadow: 0 4px 16px var(--color-shadow), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Z-index stacking for cards */
-.service-card:nth-child(1) {
-  top: 80px;
-  z-index: 101;
-}
-.service-card:nth-child(2) {
-  top: 110px;
-  z-index: 102;
-}
-.service-card:nth-child(3) {
-  top: 140px;
+/* Z-index mejorado con más separación */
+.service-card:nth-child(0) {
+  top: 100px;
   z-index: 103;
 }
-.service-card:nth-child(4) {
-  top: 170px;
-  z-index: 104;
+.service-card:nth-child(1) {
+  top: 140px;
+  z-index: 102;
 }
-.service-card:nth-child(5) {
-  top: 200px;
-  z-index: 105;
-}
-.service-card:nth-child(6) {
-  top: 230px;
-  z-index: 106;
+.service-card:nth-child(2) {
+  top: 180px;
+  z-index: 101;
 }
 
-/* Service card content styles */
-.service-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--color-primary-light);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.service-icon svg {
-  width: 28px;
-  height: 28px;
-  color: var(--color-primary);
-}
-
-.service-title {
-  font-family: "Playfair Display", serif;
-  font-size: 1.375rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--color-fg);
-}
-
-.service-description {
-  color: var(--color-muted-fg);
-  line-height: 1.6;
-  font-size: 15px;
-}
-
-/* Video styles for service cards */
+/* Estilos para tarjetas con video más profesionales */
 .service-card-video {
   position: relative;
   display: flex;
@@ -1671,21 +1633,22 @@ body {
   padding: 0;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Efecto hover mejorado */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card-video:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Mejorado el contenedor de video para mostrar el video completo */
+/* Contenedor de video optimizado para mejor visualización */
 .service-video-container {
   position: relative;
   width: 100%;
   /* Aumentado la altura y usando aspect-ratio para mejor visualización */
   aspect-ratio: 16 / 9;
-  min-height: 280px;
+  min-height: 400px;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
@@ -1697,63 +1660,90 @@ body {
   object-fit: cover;
   /* Añadido para centrar el video */
   object-position: center;
+  /* Efecto de escala sutil en hover */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Corregido el overlay del video */
+.service-card-video:hover .service-video {
+  transform: scale(1.05);
+}
+
+/* Overlay mejorado con gradiente más sofisticado y títulos en la parte inferior */
 .service-video-overlay,
 .video-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 20px;
+  height: auto;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.3) 80%,
+    transparent 100%
+  );
+  padding: 40px 32px;
   color: white;
+  /* Alineación inferior con centrado horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
 }
 
+/* Título del servicio en la parte inferior y centrado horizontalmente */
 .service-card-video .service-title {
   color: white;
   margin: 0;
-  font-size: 1.3rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  /* Fondo semitransparente elegante */
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  padding: 20px 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+/* Indicador visual centrado debajo del título */
+.service-card-video .service-title::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9));
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-video:hover .service-title::after {
+  width: 90px;
+}
+
+/* Ocultar ícono y descripción en tarjetas de video */
 .service-card-video .service-icon,
 .service-card-video .service-description {
   display: none;
 }
 
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-  .service-video-container {
-    /* Mejor altura para móvil */
-    min-height: 200px;
-    aspect-ratio: 16 / 9;
-  }
-  .video-overlay,
-  .service-video-overlay {
-    padding: 15px;
-  }
   .service-card-video .service-title {
-    font-size: 1.1rem;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    padding: 16px 24px;
   }
 
-  /* Reducido el espacio entre secciones en móvil */
-  .services {
-    padding: 30px 0 10px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .cards-stack-container {
-    /* Reducido significativamente el padding inferior */
-    padding-bottom: 15vh;
-  }
-  .service-card {
-    padding: 20px;
-    min-height: 160px;
-    /* Reducido el margen entre tarjetas */
-    margin-bottom: 20px;
-  }
   .service-card:nth-child(1) {
     top: 70px;
   }
@@ -1763,72 +1753,164 @@ body {
   .service-card:nth-child(3) {
     top: 100px;
   }
-  .service-card:nth-child(4) {
-    top: 115px;
-  }
-  .service-card:nth-child(5) {
-    top: 130px;
-  }
-  .service-card:nth-child(6) {
-    top: 145px;
-  }
-
-  /* Video container más pequeño en móvil muy pequeño */
-  .service-video-container {
-    min-height: 180px;
-  }
-
-  /* Reducido el espacio entre secciones */
-  .services {
-    padding: 20px 0 5px 0;
-  }
 }
 
-@media (min-width: 768px) {
-  .cards-stack-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 700px;
-    margin: 0 auto;
-    /* Reducido el padding inferior */
-    padding-bottom: 20vh;
-  }
-  .service-card {
-    position: sticky;
-    margin-bottom: 25px;
-  }
+@media (max-width: 480px) {
   .service-card:nth-child(1) {
-    top: 90px;
-    z-index: 101;
+    top: 60px;
   }
   .service-card:nth-child(2) {
-    top: 115px;
-    z-index: 102;
+    top: 75px;
   }
   .service-card:nth-child(3) {
-    top: 140px;
-    z-index: 103;
-  }
-  .service-card:nth-child(4) {
-    top: 165px;
-    z-index: 104;
-  }
-  .service-card:nth-child(5) {
-    top: 190px;
-    z-index: 105;
-  }
-  .service-card:nth-child(6) {
-    top: 215px;
-    z-index: 106;
+    top: 90px;
   }
 }
 
-@media (min-width: 1024px) {
+/* Responsive mejorado */
+@media (max-width: 1024px) {
   .cards-stack-container {
     max-width: 800px;
   }
+
+  .service-card:nth-child(1) {
+    top: 90px;
+  }
+  .service-card:nth-child(2) {
+    top: 120px;
+  }
+  .service-card:nth-child(3) {
+    top: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 60px 0 40px 0;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .cards-stack-container {
+    padding-bottom: 20vh;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .service-video-container {
+    min-height: 300px;
+  }
+
+  .video-overlay,
+  .service-video-overlay {
+    padding: 24px 20px;
+  }
+
+  .service-card-video .service-title {
+    font-size: 1.4rem;
+    padding: 16px 24px;
+  }
+
   .service-card {
-    padding: 36px;
+    min-height: 300px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+  }
+
+  .service-card:nth-child(1) {
+    top: 80px;
+  }
+  .service-card:nth-child(2) {
+    top: 100px;
+  }
+  .service-card:nth-child(3) {
+    top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 40px 0 30px 0;
+  }
+
+  .cards-stack-container {
+    padding-bottom: 15vh;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .service-video-container {
+    min-height: 250px;
+  }
+
+  .video-overlay,
+  .service-video-overlay {
+    padding: 20px 16px;
+  }
+
+  .service-card-video .service-title {
+    font-size: 1.2rem;
+    padding: 14px 20px;
+  }
+
+  .service-card {
+    min-height: 250px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+  }
+
+  .service-card:nth-child(1) {
+    top: 70px;
+  }
+  .service-card:nth-child(2) {
+    top: 85px;
+  }
+  .service-card:nth-child(3) {
+    top: 100px;
+  }
+
+  .service-card-video:hover {
+    transform: translateY(-4px) scale(1);
+  }
+}
+
+/* Service card content styles (si existen tarjetas sin video) */
+.service-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary-light);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.service-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-fg);
+}
+
+.service-description {
+  color: var(--color-muted-fg);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+@media (min-width: 1200px) {
+  .service-card {
+    padding: 40px;
   }
 }
 
@@ -2623,7 +2705,7 @@ body {
   border-radius: 20px;
   padding: 32px;
   position: sticky;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.05);
   min-height: 200px;
   margin-bottom: 30px;
   will-change: transform, opacity;
