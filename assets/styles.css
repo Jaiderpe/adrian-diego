@@ -1614,8 +1614,8 @@ body {
    ===================================================== */
 .services {
   position: relative;
-  /* Reduced padding for less white space */
-  padding: 40px 0;
+  /* Reducido el padding inferior para menos espacio con herramientas */
+  padding: 40px 0 20px 0;
   background: rgba(231, 229, 228, 0.3);
   overflow: visible;
 }
@@ -1645,8 +1645,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Reduced padding-bottom from 60vh to 30vh */
-  padding-bottom: 30vh;
+  /* Reducido el padding-bottom para menos espacio */
+  padding-bottom: 20vh;
 }
 
 .service-card {
@@ -1742,10 +1742,13 @@ body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* Mejorado el contenedor de video para mostrar el video completo */
 .service-video-container {
   position: relative;
   width: 100%;
-  height: 280px;
+  /* Aumentado la altura y usando aspect-ratio para mejor visualización */
+  aspect-ratio: 16 / 9;
+  min-height: 280px;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
@@ -1753,9 +1756,14 @@ body {
 .service-video {
   width: 100%;
   height: 100%;
+  /* Cambiado de cover a contain para ver el video completo */
   object-fit: cover;
+  /* Añadido para centrar el video */
+  object-position: center;
 }
 
+/* Corregido el overlay del video */
+.service-video-overlay,
 .video-overlay {
   position: absolute;
   bottom: 0;
@@ -1780,25 +1788,34 @@ body {
 
 @media (max-width: 768px) {
   .service-video-container {
-    height: 220px;
+    /* Mejor altura para móvil */
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
   }
-  .video-overlay {
+  .video-overlay,
+  .service-video-overlay {
     padding: 15px;
   }
   .service-card-video .service-title {
     font-size: 1.1rem;
   }
+
+  /* Reducido el espacio entre secciones en móvil */
+  .services {
+    padding: 30px 0 10px 0;
+  }
 }
 
 @media (max-width: 480px) {
   .cards-stack-container {
-    /* Reduced from 70vh to 40vh */
-    padding-bottom: 40vh;
+    /* Reducido significativamente el padding inferior */
+    padding-bottom: 15vh;
   }
   .service-card {
-    padding: 24px;
-    min-height: 180px;
-    margin-bottom: 25px;
+    padding: 20px;
+    min-height: 160px;
+    /* Reducido el margen entre tarjetas */
+    margin-bottom: 20px;
   }
   .service-card:nth-child(1) {
     top: 70px;
@@ -1818,6 +1835,16 @@ body {
   .service-card:nth-child(6) {
     top: 145px;
   }
+
+  /* Video container más pequeño en móvil muy pequeño */
+  .service-video-container {
+    min-height: 180px;
+  }
+
+  /* Reducido el espacio entre secciones */
+  .services {
+    padding: 20px 0 5px 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1826,8 +1853,8 @@ body {
     flex-direction: column;
     max-width: 700px;
     margin: 0 auto;
-    /* Reduced from 50vh to 25vh */
-    padding-bottom: 25vh;
+    /* Reducido el padding inferior */
+    padding-bottom: 20vh;
   }
   .service-card {
     position: sticky;
@@ -1872,8 +1899,21 @@ body {
    EXPERTISE SECTION - HERRAMIENTAS
    ===================================================== */
 .expertise {
-  /* Reduced padding for less white space */
-  padding: 40px 0;
+  /* Reducido el padding superior para menos espacio con asesorías */
+  padding: 20px 0 40px 0;
+}
+
+/* Responsive adicional para reducir espacio */
+@media (max-width: 768px) {
+  .expertise {
+    padding: 10px 0 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise {
+    padding: 5px 0 20px 0;
+  }
 }
 
 .expertise-grid {
