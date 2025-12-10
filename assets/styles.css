@@ -11,18 +11,32 @@ body {
 }
 
 :root {
-  --color-bg: #fafaf9;
-  --color-fg: #0a0908;
-  --color-primary: #166534;
-  --color-primary-light: #22c55e;
-  --color-secondary: #292524;
-  --color-accent: #d4af37;
-  --color-muted: #e7e5e4;
-  --color-muted-fg: #57534e;
-  --color-border: #d6d3d1;
+  --color-bg: #ffffff;
+  --color-fg: #1a1a1a;
+  --color-muted-fg: #666666;
   --color-card: #ffffff;
+  --color-border: #e5e5e5;
+  --color-primary: #165734;
+  --color-primary-light: rgba(22, 87, 52, 0.1);
+  --color-accent: #4ade80;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-header-bg: rgba(255, 255, 255, 0.95);
+  --color-secondary: #292524;
   --color-danger: #dc2626;
   --transition: all 0.3s ease;
+}
+
+html.dark-mode {
+  --color-bg: #0a0a0a;
+  --color-fg: #f5f5f5;
+  --color-muted-fg: #b0b0b0;
+  --color-card: #1a1a1a;
+  --color-border: #333333;
+  --color-primary: #4ade80;
+  --color-primary-light: rgba(74, 222, 128, 0.15);
+  --color-accent: #22c55e;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-header-bg: rgba(15, 15, 15, 0.95);
 }
 
 body {
@@ -31,6 +45,7 @@ body {
   color: var(--color-fg);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -40,7 +55,7 @@ body {
 }
 
 /* =====================================================
-   STICKY BUTTON - Top positioning, immediate trigger
+   STICKY BUTTON - Bottom positioning on scroll
    ===================================================== */
 [data-sticky-button] {
   position: relative;
@@ -53,32 +68,34 @@ body {
 /* Enhanced sticky-active styles with stronger specificity */
 [data-sticky-button].sticky-active {
   position: fixed !important;
-  top: 90px !important;
+  top: auto !important;
+  bottom: 24px !important;
   right: 24px !important;
   left: auto !important;
-  bottom: auto !important;
   z-index: 9999 !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
   border-radius: 8px !important;
-  padding: 12px 14px !important;
+  padding: 12px 16px !important;
   width: auto !important;
-  min-width: 56px !important;
-  max-width: 56px !important;
+  min-width: auto !important;
+  max-width: none !important;
   height: auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  gap: 8px !important;
   background: var(--color-secondary) !important;
   color: white !important;
   border: 2px solid var(--color-secondary) !important;
-  animation: slideIn 0.2s ease-out !important;
+  animation: slideUp 0.3s ease-out !important;
   transform: none !important;
 }
 
-@keyframes slideIn {
+/* Changed animation from slideIn to slideUp for bottom positioning */
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.95);
+    transform: translateY(20px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -86,8 +103,11 @@ body {
   }
 }
 
+/* Mostrar texto y icono juntos en modo sticky */
 [data-sticky-button].sticky-active .btn-text {
-  display: none !important;
+  display: inline !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
 }
 
 [data-sticky-button].sticky-active .icon-arrow {
@@ -96,7 +116,7 @@ body {
 
 [data-sticky-button].sticky-active .btn-icon {
   display: inline-flex !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
 }
 
 [data-sticky-button] .btn-text {
@@ -107,7 +127,7 @@ body {
   display: none;
 }
 
-/* Mobile sticky button - smaller, circular, bottom-right position for better UX */
+/* Mobile sticky button - circular, bottom-right position */
 @media (max-width: 768px) {
   [data-sticky-button].sticky-active {
     position: fixed !important;
@@ -214,7 +234,6 @@ body {
   border-radius: 50%;
   opacity: 0.2;
 }
-
 .particle:nth-child(1) {
   top: 10%;
   left: 20%;
@@ -407,7 +426,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(250, 250, 249, 0.9);
+  background: var(--color-header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   animation: slideDown 0.8s ease-out;
@@ -1069,106 +1088,6 @@ body {
 }
 
 /* =====================================================
-   RESPONSIVE - MOBILE
-   ===================================================== */
-@media (max-width: 768px) {
-  .hero-images-carousel {
-    height: 200px;
-    width: 120%;
-    margin-left: -10%;
-  }
-
-  .hero-image-item {
-    width: 350px;
-    height: 200px;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero {
-    padding: 100px 16px 40px;
-    min-height: auto;
-  }
-
-  .hero-content {
-    max-width: 100%;
-  }
-
-  .hero-title {
-    font-size: 1.75rem;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .hero-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 24px;
-  }
-
-  .badge {
-    padding: 6px 12px;
-    margin-bottom: 16px;
-  }
-
-  .badge span {
-    font-size: 11px;
-  }
-
-  /* Corregir el carrusel para que no cause overflow */
-  .hero-images-carousel {
-    height: 160px;
-    width: 100%;
-    margin-left: 0;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-
-  .hero-image-item {
-    width: 280px;
-    height: 160px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    padding: 0;
-  }
-
-  .btn-secondary,
-  .btn-outline {
-    width: 100%;
-    max-width: 260px;
-    padding: 14px 24px;
-    font-size: 14px;
-  }
-
-  .btn-play-animated {
-    padding: 12px 24px;
-    gap: 8px;
-  }
-
-  .play-icon-container {
-    width: 24px;
-    height: 24px;
-  }
-  .play-icon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-@media (min-width: 640px) {
-  .hero-buttons {
-    flex-direction: row;
-  }
-  .stats-grid {
-    display: grid;
-  }
-}
-
-/* =====================================================
    INDUCTION SECTION - Malas prácticas financieras
    ===================================================== */
 .induction-section {
@@ -1641,62 +1560,80 @@ body {
   line-height: 1.6;
 }
 
+/* =====================================================
+   STACKED CARDS ANIMATION - UNIFIED & PROFESSIONAL
+   ===================================================== */
+
 .cards-stack-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Reducido el padding-bottom para menos espacio */
   padding-bottom: 20vh;
 }
 
+/* Consolidated service-card styles to prevent CSS conflicts */
 .service-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 32px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
   position: sticky;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -8px 30px var(--color-shadow), 0 4px 20px rgba(0, 0, 0, 0.08);
   min-height: 200px;
   margin-bottom: 30px;
-  will-change: transform;
+  will-change: transform, opacity;
+  /* Primary transition for stacked animation - removed conflicting scroll reveal transitions */
+  transition:
+    transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1),
+    opacity 0.4s ease-out,
+    box-shadow 0.4s ease-out,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
+/* Default state before animation */
+.service-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Stacked state - applies when cards are stacking on scroll */
+.service-card.is-stacked {
+  box-shadow: 0 2px 12px var(--color-shadow), 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Z-index stacking for cards */
 .service-card:nth-child(1) {
   top: 80px;
   z-index: 101;
 }
 .service-card:nth-child(2) {
-  top: 100px;
+  top: 110px;
   z-index: 102;
 }
 .service-card:nth-child(3) {
-  top: 120px;
+  top: 140px;
   z-index: 103;
 }
 .service-card:nth-child(4) {
-  top: 140px;
+  top: 170px;
   z-index: 104;
 }
 .service-card:nth-child(5) {
-  top: 160px;
+  top: 200px;
   z-index: 105;
 }
 .service-card:nth-child(6) {
-  top: 180px;
+  top: 230px;
   z-index: 106;
 }
 
-.service-card.is-stacked {
-  transform: scale(0.96);
-  opacity: 0.85;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
+/* Service card content styles */
 .service-icon {
   width: 56px;
   height: 56px;
-  background: rgba(22, 101, 52, 0.1);
+  background: var(--color-primary-light);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -2638,4 +2575,115 @@ body {
     width: 16px;
     height: 16px;
   }
+}
+
+/* =====================================================
+   SCROLL REVEAL ANIMATIONS FOR CARDS
+   ===================================================== */
+.service-card,
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-card.is-visible,
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for multiple cards */
+.service-card:nth-child(1) {
+  transition-delay: 0s;
+}
+.service-card:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.service-card:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.service-card:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.service-card:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.service-card:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/* =====================================================
+   STACKED CARDS - Enhanced animation styles
+   ===================================================== */
+
+.service-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 32px;
+  position: sticky;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);
+  min-height: 200px;
+  margin-bottom: 30px;
+  will-change: transform, opacity;
+  /* Improved transition for stacking animation */
+  transition: transform 0.5s cubic-bezier(0.33, 0.66, 0.66, 1), opacity 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+/* Enhanced stacked state with better shadow and scale */
+.service-card.is-stacked {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* =====================================================
+   SCROLL REVEAL ANIMATIONS FOR CARDS
+   ===================================================== */
+.service-card,
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  /* Improved easing for snappier reveal animations */
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-card.is-visible,
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for multiple cards */
+.service-card:nth-child(1) {
+  transition-delay: 0s;
+}
+.service-card:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.service-card:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.service-card:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.service-card:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.service-card:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/* Botón dark mode toggle */
+#dark-mode-toggle {
+  background: var(--color-card);
+  color: var(--color-fg);
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+  background-color: var(--color-primary-light);
 }

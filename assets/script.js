@@ -544,3 +544,202 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Scroll al inicio
+  window.scrollTo(0, 0)
+
+  // =====================================================
+  // DARK MODE TOGGLE
+  // =====================================================
+  const darkModeToggle = document.getElementById("dark-mode-toggle")
+  const htmlElement = document.documentElement
+
+  // Detectar preferencia del sistema
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const savedTheme = localStorage.getItem("theme")
+  const initialTheme = savedTheme || (prefersDark ? "dark" : "light")
+
+  // Aplicar tema inicial
+  if (initialTheme === "dark") {
+    htmlElement.classList.add("dark-mode")
+  }
+
+  // Toggle dark mode
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      htmlElement.classList.toggle("dark-mode")
+      const isDark = htmlElement.classList.contains("dark-mode")
+      localStorage.setItem("theme", isDark ? "dark" : "light")
+      console.log("[v0] Dark mode toggled:", isDark ? "ON" : "OFF")
+    })
+  }
+
+  // =====================================================
+  // STICKY BUTTON - Improved for mobile with smoother tracking
+  // =====================================================
+  const stickyButton = document.querySelector("[data-sticky-button]")
+  const heroSection = document.getElementById("inicio")
+
+  if (stickyButton && heroSection) {
+    let isSticky = false
+    let rafId = null
+
+    function updateStickyButton() {
+      const heroRect = heroSection.getBoundingClientRect()
+      const heroBottom = heroRect.bottom
+      const scrollY = window.scrollY || window.pageYOffset
+
+      const isMobile = window.innerWidth < 768
+      const threshold = isMobile ? 150 : 300
+      const shouldBeSticky = heroBottom <= 50 || scrollY > threshold
+
+      if (shouldBeSticky !== isSticky) {
+        isSticky = shouldBeSticky
+        if (isSticky) {
+          stickyButton.classList.add("sticky-active")
+        } else {
+          stickyButton.classList.remove("sticky-active")
+        }
+      }
+    }
+
+    function onScroll() {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        updateStickyButton()
+        rafId = null
+      })
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("touchmove", onScroll, { passive: true })
+    window.addEventListener("resize", updateStickyButton, { passive: true })
+
+    updateStickyButton()
+    setTimeout(updateStickyButton, 50)
+    setTimeout(updateStickyButton, 200)
+  }
+
+  // =====================================================
+  // STACKED CARDS ANIMATION - PROFESSIONAL & ROBUST
+  // =====================================================
+  function initStackedCards() {
+    const container = document.querySelector(".cards-stack-container")
+    if (!container) {
+      console.log("[v0] cards-stack-container not found")
+      return
+    }
+
+    const cards = Array.from(container.querySelectorAll(".service-card"))
+    if (cards.length === 0) {
+      console.log("[v0] No service-card elements found")
+      return
+    }
+
+    console.log("[v0] Initializing stacked cards with", cards.length, "cards")
+
+    // Get responsive top values based on viewport width
+    function getTopValues() {
+      const width = window.innerWidth
+      if (width < 480) return [70, 85, 100, 115, 130, 145]
+      if (width < 768) return [70, 85, 100, 115, 130, 145]
+      if (width < 1024) return [90, 115, 140, 165, 190, 215]
+      return [80, 110, 140, 170, 200, 230]
+    }
+
+    let topValues = getTopValues()
+
+    // Initialize card positions
+    cards.forEach((card, index) => {
+      card.setAttribute("data-card-index", index)
+      card.style.position = "sticky"
+      card.style.top = topValues[index] + "px"
+      card.style.zIndex = (100 + index).toString()
+      card.style.willChange = "transform, opacity"
+    })
+
+    let scrollRafId = null
+    let isAnimating = false
+
+    function updateStackAnimation() {
+      isAnimating = true
+
+      cards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect()
+        const cardTop = cardRect.top
+        const windowHeight = window.innerHeight
+
+        // Count how many cards are below this one that are triggering stack effect
+        let stackCount = 0
+        let isCurrentStacking = false
+
+        for (let i = index + 1; i < cards.length; i++) {
+          const nextCard = cards[i]
+          const nextCardRect = nextCard.getBoundingClientRect()
+          const distance = nextCardRect.top - cardTop
+
+          // If the next card is within 85px, it's pushing this card
+          if (distance < 85 && distance > 0) {
+            stackCount++
+            isCurrentStacking = true
+          }
+        }
+
+        // Apply stacking animation when cards are stacking
+        if (isCurrentStacking && stackCount > 0) {
+          // Calculate scale and opacity based on how many cards are on top
+          const scale = Math.max(0.94 - stackCount * 0.025, 0.82)
+          const opacity = Math.max(0.9 - stackCount * 0.1, 0.6)
+
+          card.style.transform = `scale(${scale})`
+          card.style.opacity = opacity.toString()
+          card.classList.add("is-stacked")
+
+          console.log(
+            `[v0] Card ${index}: STACKING - scale=${scale.toFixed(3)}, opacity=${opacity.toFixed(2)}, stackCount=${stackCount}`,
+          )
+        } else {
+          // Reset when not stacking
+          card.style.transform = "scale(1)"
+          card.style.opacity = "1"
+          card.classList.remove("is-stacked")
+
+          console.log(`[v0] Card ${index}: NORMAL - reset to scale(1) and opacity 1`)
+        }
+      })
+
+      isAnimating = false
+    }
+
+    function onScrollOptimized() {
+      if (scrollRafId) return
+      scrollRafId = requestAnimationFrame(() => {
+        updateStackAnimation()
+        scrollRafId = null
+      })
+    }
+
+    // Attach scroll listener
+    window.addEventListener("scroll", onScrollOptimized, { passive: true })
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      topValues = getTopValues()
+      cards.forEach((card, index) => {
+        card.style.top = topValues[index] + "px"
+      })
+      updateStackAnimation()
+    })
+
+    // Initial call
+    setTimeout(() => {
+      updateStackAnimation()
+      console.log("[v0] Stacked cards initialized successfully")
+    }, 100)
+  }
+
+  // Call initialization
+  initStackedCards()
+})
