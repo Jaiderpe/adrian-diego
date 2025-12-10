@@ -6,8 +6,8 @@
     <title>LexFinance - Asesoría Financiera y Jurídica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
     <!-- Fondo animado mejorado con más elementos y movimiento -->
@@ -73,24 +73,32 @@
                     <span class="logo-text">LexFinance</span>
                 </div>
 
-                 <button id="dark-mode-toggle" title="Toggle dark mode" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000;">🌙</button>
-
                 <div class="nav-links">
                     <a href="#inicio">Inicio</a>
                     <a href="#induccion">Educación</a>
-                    <a href="#Asesorías"> Asesoría</a>
+                    <a href="#Asesorías">Asesoría</a>
                     <a href="#herramientas">Herramientas</a>
                     <a href="#contacto">Contacto</a>
                 </div>
 
-                <!-- Reemplazar botón "Agendar Consulta" por ícono de WhatsApp -->
-                <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-whatsapp" aria-label="Contactar por WhatsApp">
+                <div class="header-actions">
+                    <button class="dark-mode-btn" id="dark-mode-toggle" title="Toggle dark mode">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </button>
                     
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    <span class="whatsapp-number">3208369106</span>
-                </a>
+                    <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-whatsapp" aria-label="Contactar por WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span class="whatsapp-text">WhatsApp</span>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -107,10 +115,10 @@
             </div>
 
             <h1 class="hero-title hero-title-new">
-                Asesoría que <span class="highlight-impulsa">impulsa</span> tu crecimiento
+                ASESORÍA QUE <span class="highlight-impulsa">IMPULSA</span> TU CRECIMIENTO
             </h1>
 
-           <div class="hero-images-carousel">
+            <div class="hero-images-carousel">
                 <div class="hero-images-track">
                     <div class="hero-image-item">
                         <img src="/assets/public/images/Imagen de WhatsApp 2025-12-08 a las 11.11.10_48386074.jpg" alt="Consultoría Financiera">
@@ -124,7 +132,6 @@
                     <div class="hero-image-item">
                         <img src="/assets/public/images/Imagen de WhatsApp 2025-12-08 a las 11.11.11_9d2a7fa7.jpg" alt="Estrategia Empresarial">
                     </div>
-                    <!-- Duplicar para loop infinito -->
                     <div class="hero-image-item">
                         <img src="/assets/public/images/Imagen de WhatsApp 2025-12-08 a las 11.11.10_48386074.jpg" alt="Consultoría Financiera">
                     </div>
@@ -141,7 +148,6 @@
             </div>
 
             <div class="hero-buttons">
-                <!-- Invertido: Ahora "Comenzar Ahora" está primero (izquierda en PC) -->
                 <a href="https://wa.me/573208369106?text=Hola,%20me%20interesa%20obtener%20más%20información" target="_blank" class="btn-secondary" data-sticky-button>
                     <span class="btn-text">Comenzar Ahora</span>
                     <span class="btn-icon">▶</span>
@@ -149,7 +155,6 @@
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <!-- "Ver Casos de Éxito" ahora está segundo (derecha en PC) -->
                 <button class="btn-outline btn-play-animated" onclick="openVideoModal()">
                     <span class="play-text">Ver Casos de Éxito</span>
                     <span class="play-icon-container">
@@ -187,16 +192,11 @@
                 <rect x="230" y="120" width="40" height="160" fill="currentColor" opacity="0.5"/>
                 <rect x="290" y="80" width="40" height="200" fill="currentColor" opacity="0.7"/>
                 <polyline class="trend-line" id="trendLine" points="42,120 102,90 162,60 222,35 282,15" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
-                <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
-                <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
-                <circle class="trend-dot" id="dot4" cx="222" cy="35" r="5" fill="var(--color-primary)"/>
-                <circle class="trend-dot" id="dot5" cx="282" cy="15" r="5" fill="var(--color-primary)"/>
             </svg>
         </div>
     </section>
 
-    <!-- Nueva sección de Educación con grid 3 filas x 5-6 columnas -->
+    <!-- Sección de Educación -->
     <section id="induccion" class="induction-section">
         <div class="container">
             <div class="induction-header">
@@ -213,7 +213,7 @@
                 <h2 class="induction-title">Evita estas <span class="text-danger">malas prácticas</span> financieras</h2>
             </div>
 
-            <!-- Fila 1 - Se mueve a la derecha -->
+            <!-- Fila 1 -->
             <div class="induction-row scroll-right">
                 <div class="induction-track">
                     <div class="mini-card" style="background: #fef2f2;">
@@ -260,7 +260,7 @@
                 </div>
             </div>
 
-            <!-- Fila 2 - Se mueve a la izquierda -->
+            <!-- Fila 2 -->
             <div class="induction-row scroll-left">
                 <div class="induction-track">
                     <div class="mini-card" style="background: #fff7ed;">
@@ -283,7 +283,7 @@
                         <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
                         <span>Compras impulsivas</span>
                     </div>
-                    <!-- Duplicados para loop infinito -->
+                    <!-- Duplicados -->
                     <div class="mini-card" style="background: #fff7ed;">
                         <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 10h20"/></svg></div>
                         <span>Crédito para gastos diarios</span>
@@ -307,7 +307,7 @@
                 </div>
             </div>
 
-            <!-- Fila 3 - Se mueve a la derecha -->
+            <!-- Fila 3 -->
             <div class="induction-row scroll-right">
                 <div class="induction-track">
                     <div class="mini-card" style="background: #fefce8;">
@@ -330,7 +330,7 @@
                         <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                         <span>No tener metas financieras</span>
                     </div>
-                    <!-- Duplicados para loop infinito -->
+                    <!-- Duplicados -->
                     <div class="mini-card" style="background: #fefce8;">
                         <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                         <span>Postergar el ahorro</span>
@@ -357,14 +357,13 @@
     </section>
 
     <!-- Asesoría Section con Card Stacking -->
-    <section id="Asesoría" class="services">
+    <section id="Asesorías" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Asesoría Especializados</h2>
-                
+                <h2 class="section-title">Asesoría Especializada</h2>
             </div>
 
-            <div class="cards-stack-container" id="cardsStackContainer">
+             <div class="cards-stack-container" id="cardsStackContainer">
                 <div class="service-card service-card-video" data-index="0">
                     <video 
                         class="service-video" 
@@ -414,33 +413,29 @@
     <section id="herramientas" class="expertise">
         <div class="container">
             <div class="expertise-grid tools-section">
-                
-                
-                
                 <div class="expertise-content">
-                    <h2 class="reviews-title">Herramientas sin  <span class="text-primary">costo</span></h2>
+                    <h2 class="reviews-title">Herramientas sin <span class="text-primary">costo</span></h2>
                     <div class="stats-list">
-                            <div class="stat-text-item">
-                                <span class="stat-label">Casos Ganados</span>
-                                <span class="stat-value" data-target="95">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Capital Protegido</span>
-                                <span class="stat-value" data-target="87">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Proyectos Activos</span>
-                                <span class="stat-value" data-target="72">0%</span>
-                            </div>
-                            <div class="stat-text-item">
-                                <span class="stat-label">Tasa de Éxito</span>
-                                <span class="stat-value" data-target="94">0%</span>
-                            </div>
+                        <div class="stat-text-item">
+                            <span class="stat-label">Casos Ganados</span>
+                            <span class="stat-value" data-target="95">0%</span>
                         </div>
-                        
+                        <div class="stat-text-item">
+                            <span class="stat-label">Capital Protegido</span>
+                            <span class="stat-value" data-target="87">0%</span>
+                        </div>
+                        <div class="stat-text-item">
+                            <span class="stat-label">Proyectos Activos</span>
+                            <span class="stat-value" data-target="72">0%</span>
+                        </div>
+                        <div class="stat-text-item">
+                            <span class="stat-label">Tasa de Éxito</span>
+                            <span class="stat-value" data-target="94">0%</span>
+                        </div>
+                    </div>
 
                     <div class="tools-grid">
-                        <a href="calculadora-credito.html" class="tool-card rotate-card">
+                        <a href="/calculadora-credito.html" class="tool-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -448,33 +443,29 @@
                                     <line x1="8" y1="10" x2="16" y2="10"/>
                                     <rect x="8" y="14" width="3" height="2"/>
                                     <rect x="13" y="14" width="3" height="2"/>
-                                    <rect x="8" y="18" width="3" height="2"/>
-                                    <rect x="13" y="18" width="3" height="2"/>
                                 </svg>
                             </div>
                             <div class="tool-content">
                                 <h3 class="tool-title">Calculadora de Crédito</h3>
-                                <p class="tool-desc">Calcula amortización y pagos mensuales</p>
+                                <p class="tool-desc">Calcula amortización</p>
                             </div>
                             <span class="tool-arrow">→</span>
                         </a>
 
-                        <a href="calculadora-riesgo.html" class="tool-card rotate-card">
+                        <a href="/calculadora-riesgo.html" class="tool-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-                                    <path d="M12 8v4"/>
-                                    <circle cx="12" cy="16" r="1"/>
                                 </svg>
                             </div>
                             <div class="tool-content">
                                 <h3 class="tool-title">Calculadora de Riesgo</h3>
-                                <p class="tool-desc">Evalúa tu perfil de riesgo financiero</p>
+                                <p class="tool-desc">Evalúa tu perfil</p>
                             </div>
                             <span class="tool-arrow">→</span>
                         </a>
 
-                        <a href="simulador-credito.html" class="tool-card rotate-card">
+                        <a href="/simulador-credito.html" class="tool-card">
                             <div class="tool-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M3 3v18h18"/>
@@ -483,7 +474,7 @@
                             </div>
                             <div class="tool-content">
                                 <h3 class="tool-title">Simulador de Crédito</h3>
-                                <p class="tool-desc">Simula diferentes escenarios de crédito</p>
+                                <p class="tool-desc">Simula escenarios</p>
                             </div>
                             <span class="tool-arrow">→</span>
                         </a>
@@ -492,7 +483,6 @@
 
                 <div class="expertise-card">
                     <div class="live-stats-card">
-                        
                         <div class="chart-container">
                             <svg class="growth-chart" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet">
                                 <rect class="chart-bar bar-gray" id="bar1" x="20" y="130" width="45" height="70" rx="4"/>
@@ -500,8 +490,7 @@
                                 <rect class="chart-bar bar-gray" id="bar3" x="140" y="70" width="45" height="130" rx="4"/>
                                 <rect class="chart-bar bar-green" id="bar4" x="200" y="45" width="45" height="155" rx="4"/>
                                 <rect class="chart-bar bar-gray" id="bar5" x="260" y="25" width="45" height="175" rx="4"/>
-                                
-                                <polyline class="trend-line" id="trendLine" points="42,120 102,90 162,60 222,35 282,15" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline class="trend-line" id="trendLineChart" points="42,120 102,90 162,60 222,35 282,15" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                                 <circle class="trend-dot" id="dot1" cx="42" cy="120" r="5" fill="var(--color-primary)"/>
                                 <circle class="trend-dot" id="dot2" cx="102" cy="90" r="5" fill="var(--color-primary)"/>
                                 <circle class="trend-dot" id="dot3" cx="162" cy="60" r="5" fill="var(--color-primary)"/>
@@ -516,7 +505,7 @@
     </section>
 
     <!-- Reseñas Section -->
-    <section id="contacto" class="reviews-section">
+      <section id="contacto" class="reviews-section">
         <div class="container">
             <div class="reviews-header">
                 <span class="reviews-badge">Testimonios</span>
@@ -617,7 +606,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -632,81 +620,38 @@
                         </div>
                         <span class="logo-text">LexFinance</span>
                     </div>
-                    <p class="footer-description">
-                        Expertos en asesoría financiera y jurídica para empresas que buscan excelencia.
-                    </p>
+                    <p class="footer-description">Asesoría financiera y jurídica de excelencia para impulsar tu crecimiento empresarial.</p>
                 </div>
-
                 <div class="footer-links">
-                    <h4>Asesorías</h4>
+                    <h4>Servicios</h4>
                     <ul>
-                        <li><a href="#">Asesoría Financiera</a></li>
-                        <li><a href="#">Derecho Corporativo</a></li>
-                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#Asesorías">Asesoría Financiera</a></li>
+                        <li><a href="#Asesorías">Derecho Procesal</a></li>
+                        <li><a href="#Asesorías">Gerencia Comercial</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
                     <h4>Herramientas</h4>
                     <ul>
-                        <li><a href="calculadora-credito.html">Calculadora de Crédito</a></li>
-                        <li><a href="calculadora-riesgo.html">Calculadora de Riesgo</a></li>
-                        <li><a href="simulador-credito.html">Simulador de Crédito</a></li>
+                        <li><a href="#herramientas">Calculadora de Crédito</a></li>
+                        <li><a href="#herramientas">Calculadora de Riesgo</a></li>
+                        <li><a href="#herramientas">Simulador</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
                     <h4>Contacto</h4>
                     <ul>
-                        <li><a href="#">contacto@lexfinance.com</a></li>
-                        <li><a href="#">+1 (555) 123-4567</a></li>
-                        <li><a href="#">Ciudad de México</a></li>
+                        <li><a href="https://wa.me/573208369106">WhatsApp: 320 836 9106</a></li>
+                        <li><a href="mailto:info@lexfinance.co">info@lexfinance.co</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>© 2025 LexFinance. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal para video de casos de éxito -->
-    <div id="videoModal" class="video-modal">
-        <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
-        <div class="video-modal-content">
-            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-            <video id="successVideo" controls>
-                <source src="/assets/public/images/Video de WhatsApp 2025-12-07 a las 14.02.07_ff5a865b.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </div>
-    </div>
-
-    <script src="assets/script.js"></script>
-    <script>
-        function openVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('successVideo');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            video.play();
-        }
-
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('successVideo');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            video.pause();
-            video.currentTime = 0;
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeVideoModal();
-            }
-        });
-    </script>
+    <script src="/assets/script.js"></script>
 </body>
 </html>

@@ -743,3 +743,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Call initialization
   initStackedCards()
 })
+
+
+
+
+
+
+
+
+
+
