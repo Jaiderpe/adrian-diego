@@ -1456,7 +1456,7 @@ html.dark-mode .dark-mode-btn .icon-moon {
 /* Mobile cards container */
 @media (max-width: 480px) {
   .cards-stack-container {
-    padding-bottom: 1vh;
+    padding-bottom: 2vh;
   }
 }
 
