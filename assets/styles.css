@@ -3590,7 +3590,7 @@ html.dark-mode .dark-mode-btn .icon-moon {
 @media (max-width: 768px) {
   [data-sticky-button].sticky-active {
     bottom: 80% !important;
-    right: 11px !important;
+    right: 16px !important;
     /* Removido width/height fijos y border-radius circular para mostrar como botón pill */
     width: auto !important;
     height: auto !important;
