@@ -545,7 +545,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-
 document.addEventListener("DOMContentLoaded", () => {
   // Scroll al inicio
   window.scrollTo(0, 0)
@@ -743,13 +742,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Call initialization
   initStackedCards()
 })
-
-
-
-
-
-
-
-
-
-
