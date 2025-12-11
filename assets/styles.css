@@ -3594,7 +3594,7 @@ html.dark-mode .dark-mode-btn .icon-moon {
     /* Removido width/height fijos y border-radius circular para mostrar como botón pill */
     width: auto !important;
     height: auto !important;
-    padding: 8px 10px !important;
+    padding: 1px 1px !important;
     border-radius: 30px !important;
   }
 
