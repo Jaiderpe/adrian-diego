@@ -3589,8 +3589,8 @@ html.dark-mode .dark-mode-btn .icon-moon {
 /* Mobile sticky button - ahora muestra texto "Comenzar Ahora" en lugar del icono de play */
 @media (max-width: 768px) {
   [data-sticky-button].sticky-active {
-    bottom: 80% !important;
-    right: 50px !important;
+    bottom: 10% !important;
+    right: 20px !important;
     /* Removido width/height fijos y border-radius circular para mostrar como botón pill */
     width: auto !important;
     height: auto !important;
